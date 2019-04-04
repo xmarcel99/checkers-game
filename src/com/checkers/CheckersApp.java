@@ -11,6 +11,7 @@ public class CheckersApp extends Application {
     public static final int partOfBoardSize = 100;
     public static final int width = 8;
     public static final int height = 8;
+    public static BoardCell[][] readyBoard= new BoardCell[width][height];
 
     private Group boardGroup = new Group();
     private Group pawnsGroup = new Group();
@@ -18,24 +19,13 @@ public class CheckersApp extends Application {
     private Parent createLayout() {
         Pane root = new Pane();
         root.setPrefSize(width*partOfBoardSize,height*partOfBoardSize);
-        root.getChildren().addAll(boardGroup,pawnsGroup);
+        root.getChildren().addAll(boardGroup);
         for ( int y = 0; y< height; y ++)
             for (int x = 0; x < width; x++) {
+                BoardCell boardCell = new BoardCell((y + x) % 2 == 0,x,y);
+                readyBoard[x][y] = boardCell;
+                boardGroup.getChildren().addAll(boardCell);
 
-                Board partOfBoard = new Board((y + x) % 2 == 0, x, y);
-                boardGroup.getChildren().add(partOfBoard);
-                Pawn pawn = null;
-
-                if (y <= 2 && (x + y) % 2 != 0) {
-                    pawn = makePawn(Pawn.red, x, y);
-                }
-
-                if (y >= 5 && (x + y) % 2 != 0) {
-                    pawn = makePawn(Pawn.white, x, y);
-                }
-                if (pawn != null) {
-                    pawnsGroup.getChildren().add(pawn);
-                }
             }
         return root;
     }

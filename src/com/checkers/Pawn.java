@@ -1,6 +1,5 @@
 package com.checkers;
 
-import javafx.scene.Group;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
@@ -28,7 +27,7 @@ public class Pawn extends StackPane {
         bg.setTranslateX((partOfBoardSize - partOfBoardSize * 0.3125 * 2) / 2);
         bg.setTranslateY((partOfBoardSize - partOfBoardSize * 0.26 * 2) / 2);
 
-       getChildren().addAll(bg);
+       getChildren().add(bg);
 
     }
 }
