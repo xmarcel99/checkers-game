@@ -7,7 +7,18 @@ public class BoardCell {
     }
 
     public enum Color {
-        WHITE, BLACK
+        WHITE("#C0C0C0"),
+        BLACK("#000000");
+
+        private String colorCode;
+
+        Color(String colorCode) {
+            this.colorCode = colorCode;
+        }
+
+        public String getColorCode() {
+            return colorCode;
+        }
     }
 
     private Content content;
@@ -26,3 +37,4 @@ public class BoardCell {
         return cellColors;
     }
 }
+

@@ -48,8 +48,6 @@ public class CheckersApp extends Application {
                     boardGroup.getChildren().add(boardDrawer);
                     boardCells[x][y] = boardCell;
                 }
-
-
             }
         return root;
     }
