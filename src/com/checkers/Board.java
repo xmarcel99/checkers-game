@@ -2,13 +2,13 @@ package com.checkers;
 
 public class Board {
 
-    private BoardDrawer[][] boardCells;
+    private BoardCell[][] boardCells;
 
     public Board(int width, int heigth) {
-        this.boardCells = new BoardDrawer[width][heigth];
+        this.boardCells = new BoardCell[width][heigth];
     }
 
-    public BoardDrawer[][] getBoardCells() {
+    public BoardCell[][] getBoardCells() {
         return boardCells;
     }
 }

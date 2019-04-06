@@ -18,7 +18,7 @@ public class CheckersApp extends Application {
     private Group boardGroup = new Group();
 
     private Parent createLayout() {
-        BoardDrawer[][] boardCells = readyBoard.getBoardCells();
+        BoardCell[][] boardCells = readyBoard.getBoardCells();
         Pane root = new Pane();
         root.setPrefSize(width*partOfBoardSize,height*partOfBoardSize);
         root.getChildren().addAll(boardGroup);
@@ -26,23 +26,29 @@ public class CheckersApp extends Application {
             for (int x = 0; x < width; x++) {
 
                 BoardDrawer boardDrawer = null;
+                BoardCell boardCell = null;
                 if((x + y) % 2 == 0) {
-                    boardDrawer = makePartOfBoard(BoardCell.Color.WHITE, BoardCell.Content.EMPTY,x,y);
+                    boardCell = new BoardCell(BoardCell.Content.EMPTY, BoardCell.Color.WHITE);
+                    boardDrawer = makePartOfBoard(boardCell,x,y);
                 } else {
                     if (y <= 2 ) {
-                        boardDrawer = makePartOfBoard(BoardCell.Color.BLACK, BoardCell.Content.RED_PAWN,x,y);
+                        boardCell = new BoardCell(BoardCell.Content.RED_PAWN, BoardCell.Color.BLACK);
+                        boardDrawer = makePartOfBoard(boardCell,x,y);
                     }
                     if(y >= 5) {
-                        boardDrawer = makePartOfBoard(BoardCell.Color.BLACK, BoardCell.Content.WHITE_PAWN,x,y);
+                        boardCell = new BoardCell(BoardCell.Content.WHITE_PAWN, BoardCell.Color.BLACK);
+                        boardDrawer = makePartOfBoard(boardCell,x,y);
                     }
                     if(y > 2 && y < 5) {
-                        boardDrawer = makePartOfBoard(BoardCell.Color.BLACK, BoardCell.Content.EMPTY,x,y);
+                        boardCell = new BoardCell(BoardCell.Content.EMPTY, BoardCell.Color.BLACK);
+                        boardDrawer = makePartOfBoard(boardCell,x,y);
                     }
                 }
                 if(boardDrawer != null) {
                     boardGroup.getChildren().add(boardDrawer);
+                    boardCells[x][y] = boardCell;
                 }
-                boardCells[x][y] = boardDrawer;
+
 
             }
         return root;
@@ -63,8 +69,8 @@ public class CheckersApp extends Application {
 
     }
 
-    private BoardDrawer makePartOfBoard(BoardCell.Color color , BoardCell.Content content, int x, int y) {
-        BoardDrawer partOfBoard = new BoardDrawer(color,content, x, y);
+    private BoardDrawer makePartOfBoard(BoardCell boardCell, int x, int y) {
+        BoardDrawer partOfBoard = new BoardDrawer(boardCell, x, y);
         return  partOfBoard;
     }
 }

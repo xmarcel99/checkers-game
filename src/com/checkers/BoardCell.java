@@ -12,4 +12,17 @@ public class BoardCell {
 
     private Content content;
     private Color cellColors;
+
+    public BoardCell(Content content, Color cellColors) {
+        this.content = content;
+        this.cellColors = cellColors;
+    }
+
+    public Content getContent() {
+        return content;
+    }
+
+    public Color getCellColors() {
+        return cellColors;
+    }
 }
