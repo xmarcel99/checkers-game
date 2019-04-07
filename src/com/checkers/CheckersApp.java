@@ -68,14 +68,23 @@ public class CheckersApp extends Application {
                             BoardCell boardCell1 = boardCells[mouseX][mouseY];
 
                             if(boardCell1.getContent() == BoardCell.Content.WHITE_PAWN) {
-                                if(boardCells[(mouseX+1)][(mouseY-1)].getContent() != BoardCell.Content.WHITE_PAWN ||
-                                        boardCells[(mouseX-1)][(mouseY-1)].getContent() != BoardCell.Content.WHITE_PAWN) {
+                                if(boardCells[(mouseX+1)][(mouseY-1)].getContent() == BoardCell.Content.EMPTY ||
+                                        boardCells[(mouseX-1)][(mouseY-1)].getContent() == BoardCell.Content.EMPTY) {
                                     Rectangle rectangle = new Rectangle((mouseX + 1) * 100, (mouseY - 1) * 100, 100, 100);
                                     Rectangle rectangle1 = new Rectangle((mouseX - 1) * 100, (mouseY - 1) * 100, 100, 100);
                                     rectangle1.setFill(Color.BLUE);
                                     rectangle.setFill(Color.BLUE);
                                     boardGroup.getChildren().addAll(rectangle, rectangle1);
                                 }
+                                if(boardCells[mouseX + 1][mouseY - 1].getContent()== BoardCell.Content.RED_PAWN ||
+                                        boardCells[mouseX -1 ][mouseY - 1].getContent()== BoardCell.Content.RED_PAWN) {
+                                    Rectangle rectangle = new Rectangle((mouseX + 2) * 100, (mouseY - 2) * 100, 100, 100);
+                                    Rectangle rectangle1 = new Rectangle((mouseX - 2) * 100, (mouseY - 2) * 100, 100, 100);
+                                    rectangle1.setFill(Color.BLUE);
+                                    rectangle.setFill(Color.BLUE);
+                                    boardGroup.getChildren().addAll(rectangle, rectangle1);
+                                }
+
                             }
 
                         }
