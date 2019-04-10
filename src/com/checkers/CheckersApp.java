@@ -2,14 +2,11 @@ package com.checkers;
 import javafx.application.Application;
 
 
-import javafx.event.EventHandler;
+
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 
@@ -23,9 +20,12 @@ public class CheckersApp extends Application {
     public static Board readyBoard= new Board(width,height);
 
 
+
+
     private Group boardGroup = new Group();
 
     private Parent createLayout() {
+
         BoardCell[][] boardCells = readyBoard.getBoardCells();
         Pane root = new Pane();
         root.setPrefSize(width*partOfBoardSize,height*partOfBoardSize);
@@ -59,37 +59,6 @@ public class CheckersApp extends Application {
                 if (boardDrawer != null) {
                     boardGroup.getChildren().add(boardDrawer);
                     boardCells[x][y] = boardCell;
-
-                    boardDrawer.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            int mouseX = (int )event.getSceneX() / 100;
-                            int mouseY = (int) event.getSceneY() / 100;
-                            BoardCell boardCell1 = boardCells[mouseX][mouseY];
-
-                            if(boardCell1.getContent() == BoardCell.Content.WHITE_PAWN) {
-                                if(boardCells[(mouseX+1)][(mouseY-1)].getContent() == BoardCell.Content.EMPTY ||
-                                        boardCells[(mouseX-1)][(mouseY-1)].getContent() == BoardCell.Content.EMPTY) {
-                                    Rectangle rectangle = new Rectangle((mouseX + 1) * 100, (mouseY - 1) * 100, 100, 100);
-                                    Rectangle rectangle1 = new Rectangle((mouseX - 1) * 100, (mouseY - 1) * 100, 100, 100);
-                                    rectangle1.setFill(Color.BLUE);
-                                    rectangle.setFill(Color.BLUE);
-                                    boardGroup.getChildren().addAll(rectangle, rectangle1);
-                                }
-                                if(boardCells[mouseX + 1][mouseY - 1].getContent()== BoardCell.Content.RED_PAWN ||
-                                        boardCells[mouseX -1 ][mouseY - 1].getContent()== BoardCell.Content.RED_PAWN) {
-                                    Rectangle rectangle = new Rectangle((mouseX + 2) * 100, (mouseY - 2) * 100, 100, 100);
-                                    Rectangle rectangle1 = new Rectangle((mouseX - 2) * 100, (mouseY - 2) * 100, 100, 100);
-                                    rectangle1.setFill(Color.BLUE);
-                                    rectangle.setFill(Color.BLUE);
-                                    boardGroup.getChildren().addAll(rectangle, rectangle1);
-                                }
-
-                            }
-
-                        }
-                    });
-
                 }
 
 
@@ -113,7 +82,7 @@ public class CheckersApp extends Application {
 
     }
 
-    private BoardDrawer makePartOfBoard(BoardCell boardCell, int x, int y) {
+    public  static BoardDrawer makePartOfBoard(BoardCell boardCell, int x, int y) {
         BoardDrawer partOfBoard = new BoardDrawer(boardCell, x, y);
         return  partOfBoard;
     }

@@ -1,12 +1,10 @@
 package com.checkers;
 
-
-
-public class BoardCell {
+public class BoardCell  {
 
 
     public enum Content {
-        EMPTY, WHITE_PAWN, RED_PAWN
+        EMPTY, WHITE_PAWN, RED_PAWN, BLUE_PLACE;
     }
 
     public enum Color {
@@ -39,5 +37,14 @@ public class BoardCell {
     public Color getCellColors() {
         return cellColors;
     }
+
+    public BoardCell(Content content) {
+        this.content = content;
+    }
+
+
+
+
+
 }
 
