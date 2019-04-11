@@ -18,7 +18,7 @@ public class CheckersApp extends Application {
     public static final int width = 8;
     public static final int height = 8;
     public static Board readyBoard= new Board(width,height);
-    private Group boardGroup = new Group();
+    public static Group boardGroup = new Group();
 
     private Parent createLayout() {
 
@@ -36,19 +36,17 @@ public class CheckersApp extends Application {
                 } else {
                     if (y <= 2) {
                         boardCell = new BoardCell(BoardCell.Content.RED_PAWN, BoardCell.Color.BLACK,x, y);
-
                     }
                     if (y >= 5) {
                         boardCell = new BoardCell(BoardCell.Content.WHITE_PAWN, BoardCell.Color.BLACK, x , y);
-
                     }
                     if (y > 2 && y < 5) {
                         boardCell = new BoardCell(BoardCell.Content.EMPTY, BoardCell.Color.BLACK, x ,y);
                     }
                 }
                     boardCells[x][y] = boardCell;
-            }
 
+            }
         return root;
     }
     public static void main(String[] args) {
@@ -61,6 +59,7 @@ public class CheckersApp extends Application {
         Scene scene = new Scene(createLayout());
         BoardDrawer boardDrawer = new BoardDrawer();
         boardGroup.getChildren().addAll(boardDrawer.draw(readyBoard));
+        MovingPawns.movingPawn(readyBoard);
         primaryStage.setTitle("CheckersApp");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
