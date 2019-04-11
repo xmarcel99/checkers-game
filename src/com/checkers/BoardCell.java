@@ -24,8 +24,12 @@ public class BoardCell  {
 
     private Content content;
     private Color cellColors;
+    private int x;
+    private  int y;
 
-    public BoardCell(Content content, Color cellColors) {
+    public BoardCell(Content content, Color cellColors,int x, int y) {
+        this.x = x;
+        this.y = y;
         this.content = content;
         this.cellColors = cellColors;
     }
@@ -42,9 +46,12 @@ public class BoardCell  {
         this.content = content;
     }
 
+    public int getX() {
+        return x;
+    }
 
-
-
-
+    public int getY() {
+        return y;
+    }
 }
 
