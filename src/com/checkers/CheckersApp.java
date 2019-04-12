@@ -3,8 +3,6 @@ package com.checkers;
 import java.util.List;
 
 import javafx.application.Application;
-
-
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

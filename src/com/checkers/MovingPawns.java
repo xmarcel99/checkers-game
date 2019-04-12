@@ -38,30 +38,62 @@ public class MovingPawns {
                 oldY = (int) event.getSceneY() / 100;
                 // TUTAJ MASZ RUCH BIAŁCYH PINKÓW , DODAJ RUCH CZERWONYCH !
                 if (boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_PAWN) {
-                    if (boardCells[oldX - 1][oldY - 1].getContent() != BoardCell.Content.RED_PAWN && boardCells[oldX + 1][oldY - 1].getContent() != BoardCell.Content.RED_PAWN) {
+                    if (boardCells[oldX - 1][oldY - 1].getContent() == BoardCell.Content.EMPTY && boardCells[oldX + 1][oldY - 1].getContent() == BoardCell.Content.EMPTY) {
                         boardCells[oldX - 1][oldY - 1].setContent(BoardCell.Content.BLUE_PLACE);
                         boardCells[oldX + 1][oldY - 1].setContent(BoardCell.Content.BLUE_PLACE);
-                    } else if (boardCells[oldX - 1][oldY - 1].getContent() != BoardCell.Content.RED_PAWN && boardCells[oldX + 1][oldY - 1].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX + 2][oldY - 2].getContent() != BoardCell.Content.RED_PAWN) {
-                        boardCells[oldX - 1][oldY - 1].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else if (boardCells[oldX - 1][oldY - 1].getContent() == BoardCell.Content.EMPTY && boardCells[oldX + 1][oldY - 1].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX + 2][oldY - 2].getContent() == BoardCell.Content.EMPTY) {
                         boardCells[oldX + 2][oldY - 2].setContent(BoardCell.Content.BLUE_PLACE);
-                    } else if (boardCells[oldX - 1][oldY - 1].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX + 1][oldY - 1].getContent() != BoardCell.Content.RED_PAWN && boardCells[oldX - 2][oldY - 2].getContent() != BoardCell.Content.RED_PAWN) {
-                        boardCells[oldX + 1][oldY - 1].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else if (boardCells[oldX - 1][oldY - 1].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX + 1][oldY - 1].getContent() == BoardCell.Content.EMPTY && boardCells[oldX - 2][oldY - 2].getContent() == BoardCell.Content.EMPTY) {
                         boardCells[oldX - 2][oldY - 2].setContent(BoardCell.Content.BLUE_PLACE);
-                    } else {
-                        //Can't move anywhere so function do nothing here.
+                    } else if(boardCells[oldX -1][oldY -1].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX +1][oldY -1].getContent() == BoardCell.Content.EMPTY){
+                        boardCells[oldX +1][oldY -1].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else if(boardCells[oldX -1][oldY -1].getContent() == BoardCell.Content.EMPTY && boardCells[oldX +1][oldY -1].getContent() == BoardCell.Content.WHITE_PAWN) {
+                        boardCells[oldX -1][oldY -1].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else if(boardCells[oldX - 1][oldY - 1].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX + 1][oldY - 1].getContent() == BoardCell.Content.RED_PAWN){
+                        boardCells[oldX -2][oldY -2].setContent(BoardCell.Content.BLUE_PLACE);
+                        boardCells[oldX +2][oldY -2].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else if(boardCells[oldX -1][oldY -1].getContent() == BoardCell.Content.EMPTY && boardCells[oldX +1][oldY -1].getContent() != BoardCell.Content.EMPTY &&
+                    boardCells[oldX +2][oldY -2 ].getContent() != BoardCell.Content.EMPTY){
+                        boardCells[oldX -1][oldY -1].setContent(BoardCell.Content.BLUE_PLACE);
+                        //kiedy na prawo i na lewo ma swoich i nie może nigdzie zrobić ruchu , co wtedy ?
+                    } else if( boardCells[oldX +1][oldY -1].getContent() == BoardCell.Content.EMPTY && boardCells[oldX -1][oldY -1].getContent() != BoardCell.Content.EMPTY &&
+                    boardCells[oldX -2][oldY -2].getContent() != BoardCell.Content.EMPTY) {
+                        boardCells[oldX +1][oldX -1].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else if (boardCells[oldX -1][oldY -1].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX +1][oldY -1].getContent() == BoardCell.Content.WHITE_PAWN &&
+                    boardCells[oldX -2][oldY -2].getContent() == BoardCell.Content.EMPTY) {
+                        boardCells[oldX -2][oldY -2].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else if(boardCells[oldX +1][oldY -1].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX -1][oldY -1].getContent() == BoardCell.Content.WHITE_PAWN &&
+                    boardCells[oldX +2][oldY -2].getContent() == BoardCell.Content.EMPTY) {
+                        boardCells[oldX +2][oldY -2].setContent(BoardCell.Content.BLUE_PLACE);
                     }
                 } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_PAWN) {
                     if(boardCells[oldX -1][oldY +1].getContent() == BoardCell.Content.EMPTY && boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.EMPTY) {
                         boardCells[oldX -1][oldY +1].setContent(BoardCell.Content.BLUE_PLACE);
                         boardCells[oldX +1][oldY +1].setContent(BoardCell.Content.BLUE_PLACE);
-                    }else if(boardCells[oldX -1][oldY +1].getContent() != BoardCell.Content.WHITE_PAWN && boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldY +2][oldY+2].getContent() != BoardCell.Content.WHITE_PAWN){
-                        boardCells[oldX -1][oldY +1].setContent(BoardCell.Content.BLUE_PLACE);
+                    }else if(boardCells[oldX -1][oldY +1].getContent() == BoardCell.Content.EMPTY && boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldY +2][oldY+2].getContent() == BoardCell.Content.EMPTY){
                         boardCells[oldX +2][oldY +2].setContent(BoardCell.Content.BLUE_PLACE);
-                    }else if (boardCells[oldX -1][oldY +1].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX +1][oldY +1].getContent() != BoardCell.Content.WHITE_PAWN && boardCells[oldY -2][oldY+2].getContent() != BoardCell.Content.WHITE_PAWN) {
-                        boardCells[oldX +1][oldY +1].setContent(BoardCell.Content.BLUE_PLACE);
+                    }else if (boardCells[oldX -1][oldY +1].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.EMPTY && boardCells[oldY -2][oldY+2].getContent() == BoardCell.Content.EMPTY) {
                         boardCells[oldX -2][oldY +2].setContent(BoardCell.Content.BLUE_PLACE);
-                    } else {
-                        ////Can't move anywhere so function do nothing here.
+                    } else if(boardCells[oldX -1][oldY +1].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.EMPTY){
+                        boardCells[oldX +1][oldY +1].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else if(boardCells[oldX -1][oldY +1].getContent() == BoardCell.Content.EMPTY && boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.RED_PAWN) {
+                        boardCells[oldX -1][oldY +1].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else if(boardCells[oldX -1][oldY +1].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.WHITE_PAWN) {
+                        boardCells[oldX -2][oldY +2].setContent(BoardCell.Content.BLUE_PLACE);
+                        boardCells[oldX +2][oldY +2].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else if(boardCells[oldX -1][oldY +1].getContent() == BoardCell.Content.EMPTY && boardCells[oldX +1][oldY +1].getContent() != BoardCell.Content.EMPTY &&
+                    boardCells[oldX +2][oldY +2].getContent() != BoardCell.Content.EMPTY){
+                        boardCells[oldX -1][oldY +1].setContent(BoardCell.Content.BLUE_PLACE);
+                        //kiedy na prawo i na lewo ma swoich i nie może nigdzie zrobić ruchu , co wtedy ?
+                    } else if(boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.EMPTY && boardCells[oldX -1][oldY +1].getContent() != BoardCell.Content.EMPTY &&
+                    boardCells[oldX -2][oldY +2].getContent() != BoardCell.Content.EMPTY) {
+                        boardCells[oldX +1][oldY +1].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else if (boardCells[oldX -1][oldY +1].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.RED_PAWN &&
+                    boardCells[oldX -2][oldY +2].getContent() == BoardCell.Content.EMPTY) {
+                        boardCells[oldX -2][oldY +2].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else if(boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX -1][oldY +1].getContent() == BoardCell.Content.RED_PAWN &&
+                    boardCells[oldX +2][oldY +2].getContent() == BoardCell.Content.EMPTY) {
+                        boardCells[oldX +2][oldY +2].setContent(BoardCell.Content.BLUE_PLACE);
                     }
                 }
                 redrawBoard(board);
@@ -74,10 +106,21 @@ public class MovingPawns {
                 if (boardCells[newX][newY].getContent() == BoardCell.Content.BLUE_PLACE) {
 
                     if(boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_PAWN) {
+
+                        if(boardCells[oldX -1][oldY - 1].getContent() == BoardCell.Content.RED_PAWN  && boardCells[oldX -2][oldY -2].getContent() == BoardCell.Content.BLUE_PLACE) {
+                            boardCells[oldX -1][oldY - 1].setContent(BoardCell.Content.EMPTY);
+                        } else if(boardCells[oldX +1][oldY -1].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX +2][oldY -2].getContent() == BoardCell.Content.BLUE_PLACE) {
+                            boardCells[oldX +1][oldY -1].setContent(BoardCell.Content.EMPTY);
+                        }
                         boardCells[newX][newY].setContent(BoardCell.Content.WHITE_PAWN);
                         boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
 
                     } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_PAWN) {
+                        if(boardCells[oldX -1][oldY + 1].getContent() == BoardCell.Content.WHITE_PAWN  && boardCells[oldX -2][oldY +2].getContent() == BoardCell.Content.BLUE_PLACE) {
+                            boardCells[oldX -1][oldY + 1].setContent(BoardCell.Content.EMPTY);
+                        } else if(boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX +2][oldY +2].getContent() == BoardCell.Content.BLUE_PLACE) {
+                            boardCells[oldX +1][oldY +1].setContent(BoardCell.Content.EMPTY);
+                        }
                         boardCells[newX][newY].setContent(BoardCell.Content.RED_PAWN);
                         boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
                     }
@@ -93,6 +136,7 @@ public class MovingPawns {
 
                     redrawBoard(board);
                 }
+                isSelect = true;
             }
     }
 
