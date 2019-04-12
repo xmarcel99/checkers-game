@@ -14,11 +14,6 @@ public class BoardElement extends StackPane {
         int x = boardCell.getX();
         int y = boardCell.getY();
 
-        if(boardCell.getContent() == BoardCell.Content.BLUE_PLACE) {
-            Rectangle rectangle = new Rectangle((x-1)*100,(y-1)*100,partOfBoardSize, partOfBoardSize);
-            rectangle.setFill(Color.BLUE);
-            getChildren().add(rectangle);
-        }
         if (boardCell.getContent() == BoardCell.Content.EMPTY) {
             relocate(x * partOfBoardSize, y * partOfBoardSize);
             Rectangle rectangle = new Rectangle(partOfBoardSize, partOfBoardSize);
@@ -41,6 +36,12 @@ public class BoardElement extends StackPane {
             bg.setTranslateY((partOfBoardSize - partOfBoardSize * 0.49 * 2) / 2);
             getChildren().addAll(rectangle, bg);
 
+        }
+
+        if(boardCell.getContent() == BoardCell.Content.BLUE_PLACE) {
+            Rectangle rectangle = new Rectangle((x)*100,(y)*100,partOfBoardSize, partOfBoardSize);
+            rectangle.setFill(Color.BLUE);
+            getChildren().add(rectangle);
         }
 
     }

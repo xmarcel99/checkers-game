@@ -42,10 +42,6 @@ public class BoardCell  {
         return cellColors;
     }
 
-    public BoardCell(Content content) {
-        this.content = content;
-    }
-
     public int getX() {
         return x;
     }
@@ -53,5 +49,22 @@ public class BoardCell  {
     public int getY() {
         return y;
     }
+
+    public void setContent(Content content) {
+        this.content = content;
+    }
+
+    public void setCellColors(Color cellColors) {
+        this.cellColors = cellColors;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
 }
+
 
