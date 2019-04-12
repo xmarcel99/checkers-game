@@ -36,6 +36,7 @@ public class MovingPawns {
             if (isSelect) {
                 oldX = (int) event.getSceneX() / 100;
                 oldY = (int) event.getSceneY() / 100;
+                // TUTAJ MASZ RUCH BIAŁCYH PINKÓW , DODAJ RUCH CZERWONYCH !
                 if (boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_PAWN) {
                     if (boardCells[oldX - 1][oldY - 1].getContent() != BoardCell.Content.RED_PAWN && boardCells[oldX + 1][oldY - 1].getContent() != BoardCell.Content.RED_PAWN) {
                         boardCells[oldX - 1][oldY - 1].setContent(BoardCell.Content.BLUE_PLACE);
@@ -49,18 +50,37 @@ public class MovingPawns {
                     } else {
                         //Can't move anywhere so function do nothing here.
                     }
+                } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_PAWN) {
+                    if(boardCells[oldX -1][oldY +1].getContent() == BoardCell.Content.EMPTY && boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.EMPTY) {
+                        boardCells[oldX -1][oldY +1].setContent(BoardCell.Content.BLUE_PLACE);
+                        boardCells[oldX +1][oldY +1].setContent(BoardCell.Content.BLUE_PLACE);
+                    }else if(boardCells[oldX -1][oldY +1].getContent() != BoardCell.Content.WHITE_PAWN && boardCells[oldX +1][oldY +1].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldY +2][oldY+2].getContent() != BoardCell.Content.WHITE_PAWN){
+                        boardCells[oldX -1][oldY +1].setContent(BoardCell.Content.BLUE_PLACE);
+                        boardCells[oldX +2][oldY +2].setContent(BoardCell.Content.BLUE_PLACE);
+                    }else if (boardCells[oldX -1][oldY +1].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX +1][oldY +1].getContent() != BoardCell.Content.WHITE_PAWN && boardCells[oldY -2][oldY+2].getContent() != BoardCell.Content.WHITE_PAWN) {
+                        boardCells[oldX +1][oldY +1].setContent(BoardCell.Content.BLUE_PLACE);
+                        boardCells[oldX -2][oldY +2].setContent(BoardCell.Content.BLUE_PLACE);
+                    } else {
+                        ////Can't move anywhere so function do nothing here.
+                    }
                 }
-
                 redrawBoard(board);
                 isSelect = false;
-            } else {
+                }else {
 
                 newX = (int) event.getSceneX() / 100;
                 newY = (int) event.getSceneY() / 100;
 
                 if (boardCells[newX][newY].getContent() == BoardCell.Content.BLUE_PLACE) {
-                    boardCells[newX][newY].setContent(BoardCell.Content.WHITE_PAWN);
-                    boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
+
+                    if(boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_PAWN) {
+                        boardCells[newX][newY].setContent(BoardCell.Content.WHITE_PAWN);
+                        boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
+
+                    } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_PAWN) {
+                        boardCells[newX][newY].setContent(BoardCell.Content.RED_PAWN);
+                        boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
+                    }
                     for (BoardCell[] x : board.getBoardCells()) {
                         for (BoardCell y : x) {
 
