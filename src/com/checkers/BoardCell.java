@@ -4,7 +4,12 @@ public class BoardCell  {
 
 
     public enum Content {
-        EMPTY, WHITE_PAWN, RED_PAWN, BLUE_PLACE;
+        EMPTY(999), WHITE_PAWN(1), RED_PAWN(-1), BLUE_PLACE(0);
+        int  content;
+        Content(int content) {
+            this.content = content;
+        }
+
     }
 
     public enum Color {
@@ -26,6 +31,14 @@ public class BoardCell  {
     private Color cellColors;
     private int x;
     private  int y;
+
+    public BoardCell(int content) {
+        if(content == 1) {
+            setContent(Content.WHITE_PAWN);
+        } else {
+            setContent(Content.RED_PAWN);
+        }
+    }
 
     public BoardCell(Content content, Color cellColors,int x, int y) {
         this.x = x;
