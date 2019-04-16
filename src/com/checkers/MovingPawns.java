@@ -118,6 +118,8 @@ public class MovingPawns {
             if(boardCells[oldX -1][oldY -1*pawnType].getContent() == new BoardCell(-pawnType).getContent()) {
                 boardCells[oldX -1][oldY -1*pawnType].setContent(BoardCell.Content.EMPTY);
             }
+        }else if (oldX == 3 && boardCells[oldX +1][oldY -1*pawnType].getContent() == new BoardCell(-pawnType).getContent()) {
+            boardCells[oldX +1][oldY -1*pawnType].setContent(BoardCell.Content.EMPTY);
         }else if (oldX == 6 && boardCells[oldX -1][oldY -1*pawnType].getContent() == new BoardCell(-pawnType).getContent()) {
             boardCells[oldX -1][oldY -1*pawnType].setContent(BoardCell.Content.EMPTY);
         }else if (oldX + 1 == 7) {
