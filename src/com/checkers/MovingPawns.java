@@ -15,7 +15,7 @@ import javafx.scene.input.MouseEvent;
     private static BoardDrawer boardDrawer = new BoardDrawer();
     private static boolean  whitePawnTurn = true;
 
-    private static void addMovingPawnListener(List<BoardElement> boardElements, Board board) {
+    public static void addMovingPawnListener(List<BoardElement> boardElements, Board board) {
         addListeners(boardElements, board);
 
     }
