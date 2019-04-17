@@ -5,7 +5,7 @@ import java.util.List;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
-public class MovingPawns {
+ class MovingPawns {
 
     private static int oldX;
     private static int oldY;
@@ -13,9 +13,9 @@ public class MovingPawns {
     private static int newY;
     private static boolean isSelect = true;
     private static BoardDrawer boardDrawer = new BoardDrawer();
-    public static boolean  whitePawnTurn = true;
+    private static boolean  whitePawnTurn = true;
 
-    public static void addMovingPawnListener(List<BoardElement> boardElements, Board board) {
+    private static void addMovingPawnListener(List<BoardElement> boardElements, Board board) {
         addListeners(boardElements, board);
 
     }
@@ -81,7 +81,7 @@ public class MovingPawns {
         }
     }
 
-    public static void showAnablePawnMoves (Board boardCellsReady , int oldX, int oldY,int pawnType) {
+    private static void showAnablePawnMoves (Board boardCellsReady , int oldX, int oldY,int pawnType) {
         BoardCell[][] boardCells = boardCellsReady.getBoardCells();
 
         if(whitePawnTurn  && boardCells[oldX][oldY].getContent() != BoardCell.Content.WHITE_PAWN) {
@@ -116,7 +116,7 @@ public class MovingPawns {
         }
     }
 
-    public static void movePawnToBluePlace(int newX, int newY, int oldX, int oldY, int pawnType) {
+    private static void movePawnToBluePlace(int newX, int newY, int oldX, int oldY, int pawnType) {
         BoardCell[][] boardCells  = CheckersApp.readyBoard.getBoardCells();
 
 
