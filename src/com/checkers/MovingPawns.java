@@ -82,69 +82,63 @@ public class MovingPawns {
     }
 
     public static void showAnablePawnMoves (Board boardCellsReady , int oldX, int oldY,int pawnType) {
-        BoardCell boardCells[][] = boardCellsReady.getBoardCells();
+        BoardCell[][] boardCells = boardCellsReady.getBoardCells();
 
         if(whitePawnTurn  && boardCells[oldX][oldY].getContent() != BoardCell.Content.WHITE_PAWN) {
             isSelect = true;
         } else if (!whitePawnTurn &&  boardCells[oldX][oldY].getContent() != BoardCell.Content.RED_PAWN ) {
-                isSelect = true;
+            isSelect = true;
         }else if ( boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_PAWN ||boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_PAWN) {
-            if ((oldX == 0  && boardCells[oldX +1][oldY -1*pawnType].getContent() == BoardCell.Content.EMPTY)) {
-                boardCells[oldX +1][oldY -1*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            }else if((oldX == 0 && boardCells[oldX +1][oldY -1*pawnType].getContent() == new BoardCell(-pawnType).getContent() &&
+            if ((oldX == 0  && boardCells[oldX +1][oldY -pawnType].getContent() == BoardCell.Content.EMPTY)) {
+                boardCells[oldX +1][oldY -pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+            }else if((oldX == 0 && boardCells[oldX +1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent() &&
                     boardCells[oldX + 2][oldY -2*pawnType].getContent() == BoardCell.Content.EMPTY)) {
                 boardCells[oldX + 2][oldY -2*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            }else if (oldX == 1 && boardCells[oldX -1][oldY -1*pawnType].getContent() != BoardCell.Content.EMPTY && boardCells[oldX +1][oldY -1*pawnType].getContent() == BoardCell.Content.EMPTY) {
-                boardCells[oldX +1][oldY -1*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            }else if (oldX == 7 && boardCells[oldX -1][oldY -1*pawnType].getContent() == BoardCell.Content.EMPTY) {
-                boardCells[oldX -1][oldY -1*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            } else if(oldX != 7 && oldX != 0 && boardCells[oldX -1][oldY -1 * pawnType].getContent() == BoardCell.Content.EMPTY && boardCells[oldX + 1][oldY -1 * pawnType].getContent() == BoardCell.Content.EMPTY) {
-                boardCells[oldX -1][oldY -1 * pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-                boardCells[oldX + 1][oldY -1 * pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            } else if (boardCells[oldX -1][oldY -1 *pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX -2][oldY -2*pawnType].getContent() == BoardCell.Content.EMPTY) {
+            }else if (oldX == 1 && boardCells[oldX -1][oldY -pawnType].getContent() != BoardCell.Content.EMPTY && boardCells[oldX +1][oldY -pawnType].getContent() == BoardCell.Content.EMPTY) {
+                boardCells[oldX +1][oldY -pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+            }else if (oldX == 7 && boardCells[oldX -1][oldY -pawnType].getContent() == BoardCell.Content.EMPTY) {
+                boardCells[oldX -1][oldY -pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+            } else if(oldX != 7 && oldX != 0 && boardCells[oldX -1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY && boardCells[oldX + 1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY) {
+                boardCells[oldX -1][oldY - pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+                boardCells[oldX + 1][oldY - pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+            } else if (boardCells[oldX -1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX -2][oldY -2*pawnType].getContent() == BoardCell.Content.EMPTY) {
                 boardCells[oldX -2][oldY -2*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            }else if (boardCells[oldX +1][oldY -1*pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX +2][oldY -2*pawnType].getContent() == BoardCell.Content.EMPTY) {
+            }else if (boardCells[oldX +1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX +2][oldY -2*pawnType].getContent() == BoardCell.Content.EMPTY) {
                 boardCells[oldX +2][oldY -2*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            }else if ((boardCells[oldX -1][oldY -1*pawnType].getContent() != BoardCell.Content.EMPTY) && boardCells[oldX +1][oldY -1*pawnType].getContent() == BoardCell.Content.EMPTY) {
-                boardCells[oldX +1][oldY -1*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            } else if (boardCells[oldX +1][oldY -1*pawnType].getContent() != BoardCell.Content.EMPTY &&boardCells[oldX -1][oldY -1*pawnType].getContent() == BoardCell.Content.EMPTY ) {
-                boardCells[oldX -1][oldY -1*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+            }else if ((boardCells[oldX -1][oldY -pawnType].getContent() != BoardCell.Content.EMPTY) && boardCells[oldX +1][oldY -pawnType].getContent() == BoardCell.Content.EMPTY) {
+                boardCells[oldX +1][oldY -pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+            } else if (boardCells[oldX +1][oldY -pawnType].getContent() != BoardCell.Content.EMPTY &&boardCells[oldX -1][oldY -pawnType].getContent() == BoardCell.Content.EMPTY ) {
+                boardCells[oldX -1][oldY -pawnType].setContent(BoardCell.Content.BLUE_PLACE);
             }
             redrawBoard(boardCellsReady);
             isSelect = false;
-            if(pawnType == 1) {
-                whitePawnTurn = false;
-            } else {
-                whitePawnTurn = true;
-            }
+            whitePawnTurn = pawnType != 1;
         }
     }
 
     public static void movePawnToBluePlace(int newX, int newY, int oldX, int oldY, int pawnType) {
-        BoardCell boardCells [][] = CheckersApp.readyBoard.getBoardCells();
+        BoardCell[][] boardCells  = CheckersApp.readyBoard.getBoardCells();
 
 
-            if (oldX == 0 || oldX == 1) {
-                boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
-                if(boardCells[oldX +1][oldY -1*pawnType].getContent() == new BoardCell(-pawnType).getContent() ) {
-                    boardCells[oldX +1][oldY -1*pawnType].setContent(BoardCell.Content.EMPTY);
-                }
-            }else if ( oldX == 7) {
-                boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
-                if(boardCells[oldX -1][oldY -1*pawnType].getContent() == new BoardCell(-pawnType).getContent()) {
-                    boardCells[oldX -1][oldY -1*pawnType].setContent(BoardCell.Content.EMPTY);
-                }
-            }else if (oldX == 3 && boardCells[oldX +1][oldY -1*pawnType].getContent() == new BoardCell(-pawnType).getContent()) {
-                boardCells[oldX +1][oldY -1*pawnType].setContent(BoardCell.Content.EMPTY);
-            }else if (oldX == 6 && boardCells[oldX -1][oldY -1*pawnType].getContent() == new BoardCell(-pawnType).getContent()) {
-                boardCells[oldX -1][oldY -1*pawnType].setContent(BoardCell.Content.EMPTY);
-            }else if (oldX + 1 == 7) {
-                boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
-            } else if (boardCells[oldX - 1][oldY - 1*pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX - 2][oldY - 2*pawnType].getContent() == BoardCell.Content.BLUE_PLACE) {
-                boardCells[oldX - 1][oldY - 1].setContent(BoardCell.Content.EMPTY);
-            }else if (boardCells[oldX + 1][oldY - 1*pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX + 2][oldY - 2*pawnType].getContent() == BoardCell.Content.BLUE_PLACE) {
-                boardCells[oldX + 1][oldY - 1].setContent(BoardCell.Content.EMPTY);
+        if (oldX == 0 || oldX == 1) {
+            boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
+            if(boardCells[oldX +1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent() ) {
+                boardCells[oldX +1][oldY -pawnType].setContent(BoardCell.Content.EMPTY);
             }
+        }else if ( oldX == 7) {
+            boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
+            if(boardCells[oldX -1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent()) {
+                boardCells[oldX -1][oldY -pawnType].setContent(BoardCell.Content.EMPTY);
+            }
+        }else if (oldX == 6 && boardCells[oldX -1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent()) {
+            boardCells[oldX -1][oldY -pawnType].setContent(BoardCell.Content.EMPTY);
+        }else if (oldX + 1 == 7) {
+            boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
+        } else if (boardCells[oldX - 1][oldY - pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX - 2][oldY - 2*pawnType].getContent() == BoardCell.Content.BLUE_PLACE) {
+            boardCells[oldX - 1][oldY - pawnType].setContent(BoardCell.Content.EMPTY);
+        }else if (boardCells[oldX + 1][oldY - pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX + 2][oldY - 2*pawnType].getContent() == BoardCell.Content.BLUE_PLACE) {
+            boardCells[oldX + 1][oldY - pawnType].setContent(BoardCell.Content.EMPTY);
+        }
 
 
 
