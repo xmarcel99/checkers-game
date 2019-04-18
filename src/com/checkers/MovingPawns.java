@@ -5,7 +5,7 @@ import java.util.List;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
- class MovingPawns {
+class MovingPawns {
 
     private static int oldX;
     private static int oldY;
@@ -101,9 +101,9 @@ import javafx.scene.input.MouseEvent;
             } else if(oldX != 7 && oldX != 0 && boardCells[oldX -1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY && boardCells[oldX + 1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY) {
                 boardCells[oldX -1][oldY - pawnType].setContent(BoardCell.Content.BLUE_PLACE);
                 boardCells[oldX + 1][oldY - pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            } else if (boardCells[oldX -1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX -2][oldY -2*pawnType].getContent() == BoardCell.Content.EMPTY) {
+            } else if ( boardCells[oldX -1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX -2][oldY -2*pawnType].getContent() == BoardCell.Content.EMPTY) {
                 boardCells[oldX -2][oldY -2*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            }else if (boardCells[oldX +1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX +2][oldY -2*pawnType].getContent() == BoardCell.Content.EMPTY) {
+            }else if ( (oldX +1 != 7) && boardCells[oldX +1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX +2][oldY -2*pawnType].getContent() == BoardCell.Content.EMPTY) {
                 boardCells[oldX +2][oldY -2*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
             }else if ((boardCells[oldX -1][oldY -pawnType].getContent() != BoardCell.Content.EMPTY) && boardCells[oldX +1][oldY -pawnType].getContent() == BoardCell.Content.EMPTY) {
                 boardCells[oldX +1][oldY -pawnType].setContent(BoardCell.Content.BLUE_PLACE);
@@ -130,7 +130,7 @@ import javafx.scene.input.MouseEvent;
             if(boardCells[oldX -1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent()) {
                 boardCells[oldX -1][oldY -pawnType].setContent(BoardCell.Content.EMPTY);
             }
-        }else if (oldX == 6 && boardCells[oldX -1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent()) {
+        }else if (oldX == 6 && boardCells[oldX -1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX -2][oldY -2*pawnType].getContent() == BoardCell.Content.BLUE_PLACE) {
             boardCells[oldX -1][oldY -pawnType].setContent(BoardCell.Content.EMPTY);
         }else if (oldX + 1 == 7) {
             boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
@@ -158,6 +158,7 @@ import javafx.scene.input.MouseEvent;
         CheckersApp.boardGroup.getChildren().addAll(elementsToDraw);
     }
 }
+
 
 
 
