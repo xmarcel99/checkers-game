@@ -27,11 +27,20 @@ public class BoardElement extends StackPane {
             if (boardCell.getContent() == BoardCell.Content.RED_PAWN) {
                 bg.setFill(Color.valueOf("#c40003"));
                 bg.setStroke(Color.valueOf("#C0C0C0"));
+                bg.setStrokeWidth(partOfBoardSize * 0.03);
             } else if (boardCell.getContent() == BoardCell.Content.WHITE_PAWN) {
                 bg.setFill(Color.valueOf("#fff9f4"));
                 bg.setStroke(Color.valueOf("#C0C0C0"));
+                bg.setStrokeWidth(partOfBoardSize * 0.03);
+            }else if (boardCell.getContent() == BoardCell.Content.WHITE_KING) {
+                bg.setFill(Color.valueOf("#00FF00"));
+                bg.setStroke(Color.WHITE);
+                bg.setStrokeWidth(partOfBoardSize *  0.23);
+            } else if (boardCell.getContent() == BoardCell.Content.RED_KING) {
+                bg.setFill(Color.valueOf("#00FF00"));
+                bg.setStroke(Color.RED);
+                bg.setStrokeWidth(partOfBoardSize *  0.23);
             }
-            bg.setStrokeWidth(partOfBoardSize * 0.03);
             bg.setTranslateX((partOfBoardSize - partOfBoardSize * 0.48 * 2) / 2);
             bg.setTranslateY((partOfBoardSize - partOfBoardSize * 0.49 * 2) / 2);
             getChildren().addAll(rectangle, bg);
