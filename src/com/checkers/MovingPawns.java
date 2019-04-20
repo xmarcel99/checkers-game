@@ -91,9 +91,10 @@ class MovingPawns {
         } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_PAWN || boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_PAWN) {
             if ((oldX == 0 && boardCells[oldX + 1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY)) {
                 boardCells[oldX + 1][oldY - pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            } else if ((oldX == 0 && boardCells[oldX + 1][oldY - pawnType].getContent() == new BoardCell(-pawnType).getContent() &&
-                    boardCells[oldX + 2][oldY - 2 * pawnType].getContent() == BoardCell.Content.EMPTY)) {
-                boardCells[oldX + 2][oldY - 2 * pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+            } else if ((oldX == 0 && boardCells[oldX + 1][oldY - pawnType].getContent() == new BoardCell(-pawnType).getContent() && isEmptyCell(-2,2*pawnType,boardCells))) {
+                if(isEmptyCell(-2,2*pawnType,boardCells)) {
+                    boardCells[oldX + 2][oldY - 2 * pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+                }
             }else if (oldX == 1 && boardCells[oldX - 1][oldY - pawnType].getContent() != BoardCell.Content.EMPTY && boardCells[oldX + 1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY) {
                 boardCells[oldX + 1][oldY - pawnType].setContent(BoardCell.Content.BLUE_PLACE);
             } else if (oldX == 7 && boardCells[oldX - 1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY) {
@@ -101,18 +102,22 @@ class MovingPawns {
             } else if (oldX != 7 && oldX != 0 && boardCells[oldX - 1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY && boardCells[oldX + 1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY) {
                 boardCells[oldX - 1][oldY - pawnType].setContent(BoardCell.Content.BLUE_PLACE);
                 boardCells[oldX + 1][oldY - pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            }else if (oldX == 6 && boardCells[oldX -1][oldY-pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX -2][oldY-2*pawnType].getContent() == BoardCell.Content.EMPTY) {
-                boardCells[oldX -2][oldY-2*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            } else if ( oldX > 1 && boardCells[oldX - 1][oldY - pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX - 2][oldY - 2 * pawnType].getContent() == BoardCell.Content.EMPTY) {
-                boardCells[oldX - 2][oldY - 2 * pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            } else if ( oldX < 6 && boardCells[oldX + 1][oldY - pawnType].getContent() == new BoardCell(-pawnType).getContent() && boardCells[oldX + 2][oldY - 2 * pawnType].getContent() == BoardCell.Content.EMPTY) {
-                boardCells[oldX + 2][oldY - 2 * pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            } else if (oldX < 7 && (boardCells[oldX - 1][oldY - pawnType].getContent() != BoardCell.Content.EMPTY) && boardCells[oldX + 1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY) {
+            }else if ( oldX > 1 && boardCells[oldX - 1][oldY - pawnType].getContent() == new BoardCell(-pawnType).getContent() && isEmptyCell(2, 2 * pawnType, boardCells)) {
+                if (isEmptyCell(2, 2 * pawnType, boardCells) ) {
+                    boardCells[oldX -2][oldY -2*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+                }
+            }else if ( oldX < 6 && boardCells[oldX + 1][oldY - pawnType].getContent() == new BoardCell(-pawnType).getContent() && isEmptyCell(-2, 2 * pawnType, boardCells)) {
+                if (isEmptyCell(-2, 2 * pawnType, boardCells) ) {
+                    boardCells[oldX +2][oldY -2*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+                }
+            }else if (oldX > 0 && oldX < 7 && (boardCells[oldX - 1][oldY - pawnType].getContent() != BoardCell.Content.EMPTY) && boardCells[oldX + 1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY) {
                 boardCells[oldX + 1][oldY - pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            } else if (oldX < 7 && boardCells[oldX + 1][oldY - pawnType].getContent() != BoardCell.Content.EMPTY && boardCells[oldX - 1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY) {
+            } else if (oldX > 0 && oldX < 7 && boardCells[oldX + 1][oldY - pawnType].getContent() != BoardCell.Content.EMPTY && boardCells[oldX - 1][oldY - pawnType].getContent() == BoardCell.Content.EMPTY) {
                 boardCells[oldX - 1][oldY - pawnType].setContent(BoardCell.Content.BLUE_PLACE);
-            } else if (oldX == 7 && boardCells[oldX -1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent() &&boardCells[oldX -2][oldY -2*pawnType].getContent()== BoardCell.Content.EMPTY) {
-                boardCells[oldX -2][oldY -2*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+            } else if (oldX == 7 && boardCells[oldX -1][oldY -pawnType].getContent() == new BoardCell(-pawnType).getContent() && isEmptyCell(2,2*pawnType,boardCells)) {
+                if(isEmptyCell(2,2*pawnType,boardCells)) {
+                    boardCells[oldX -2][oldY -2*pawnType].setContent(BoardCell.Content.BLUE_PLACE);
+                }
             }
             redrawBoard(boardCellsReady);
             isSelect = false;
@@ -183,8 +188,13 @@ class MovingPawns {
         addListeners(elementsToDraw, board);
         CheckersApp.boardGroup.getChildren().addAll(elementsToDraw);
     }
+
+    private static boolean isEmptyCell(int i, int i2, BoardCell[][] boardCells) {
+        if (oldX -i < 0 || oldX -i> 7 || oldY-i2 <0 || oldY -i2> 7) {
+            return false;
+        }
+        return boardCells[oldX - i][oldY - i2].getContent() == BoardCell.Content.EMPTY;
+    }
 }
-
-
 
 
