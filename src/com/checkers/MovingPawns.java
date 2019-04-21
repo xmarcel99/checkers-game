@@ -37,10 +37,17 @@ class MovingPawns {
             oldY = (int) event.getSceneY() / 100;
 
             if (whitePawnTurn) {
-                showAllowedPawnMoves(board, oldX, oldY, BoardCell.Content.WHITE_PAWN);
-
+                if(boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_PAWN) {
+                    showAllowedPawnMoves(board, oldX, oldY, BoardCell.Content.WHITE_PAWN);
+                } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_KING) {
+                    showAllowedPawnMoves(board,oldX,oldY, BoardCell.Content.WHITE_KING);
+                }
             } else {
-                showAllowedPawnMoves(board, oldX, oldY, BoardCell.Content.RED_PAWN);
+                if(boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_PAWN) {
+                    showAllowedPawnMoves(board, oldX, oldY, BoardCell.Content.RED_PAWN);
+                } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
+                    showAllowedPawnMoves(board,oldX,oldY, BoardCell.Content.RED_KING);
+                }
             }
         } else {
 
@@ -90,6 +97,8 @@ class MovingPawns {
             if (boardCells[oldX - 1][oldY - 1].getContent() == BoardCell.Content.EMPTY) {
                 boardCells[oldX - 1][oldY - 1].setContent(BoardCell.Content.BLUE_PLACE);
             }
+            redrawBoard(boardCellsReady);
+            isSelect = false;
         } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_PAWN || boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_PAWN) {
             if ((oldX == 0 && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent() == BoardCell.Content.EMPTY)) {
                 boardCells[oldX + 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
@@ -188,18 +197,20 @@ class MovingPawns {
     }
 
     private static boolean isStillWhitePawnTurn(boolean isWhitePawnTurn, int oldX, int oldY, BoardCell[][] boardCells) {
-        /*boolean isStillWhitePawnTurn = false;
-        if (boardCells[oldX][oldY].getContent() != BoardCell.Content.WHITE_PAWN && whitePawnTurn) {
-            isStillWhitePawnTurn = true;
-        } else if (boardCells[oldX][oldY].getContent() != BoardCell.Content.WHITE_KING && whitePawnTurn) {
-            isStillWhitePawnTurn = true;
+        boolean isStillWhitePawnTurn = false;
+        if (boardCells[oldX][oldY].getContent() != BoardCell.Content.WHITE_PAWN && isWhitePawnTurn && boardCells[oldX][oldY].getContent() != BoardCell.Content.WHITE_KING) {
+             isStillWhitePawnTurn = true;
         }
-        return isStillWhitePawnTurn;*/
-        return (boardCells[oldX][oldY].getContent() != BoardCell.Content.WHITE_PAWN && isWhitePawnTurn);
+        return isStillWhitePawnTurn;
+
     }
 
     private static boolean isStillRedPawnTurn(boolean isRedPawnTurn, int oldX, int oldY, BoardCell[][] boardCells) {
-        return boardCells[oldX][oldY].getContent() != BoardCell.Content.RED_PAWN && !isRedPawnTurn;
+        boolean isStillRedPawnTurn = false;
+        if(boardCells[oldX][oldY].getContent() != BoardCell.Content.RED_PAWN && !isRedPawnTurn && boardCells[oldX][oldY].getContent() != BoardCell.Content.RED_KING){
+            isStillRedPawnTurn = true;
+        }
+        return  isStillRedPawnTurn;
     }
 }
 
