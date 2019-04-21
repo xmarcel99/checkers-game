@@ -12,6 +12,8 @@ class MovingPawns {
     private static boolean isSelect = true;
     private static BoardDrawer boardDrawer = new BoardDrawer();
     private static boolean whitePawnTurn = true;
+    private static int kingX;
+    private static int kingY;
 
     public static void addMovingPawnListener(List<BoardElement> boardElements, Board board) {
         addListeners(boardElements, board);
@@ -97,7 +99,7 @@ class MovingPawns {
             isSelect = true;
         } else if (isStillRedPawnTurn(whitePawnTurn, oldX, oldY, boardCells)) {
             isSelect = true;
-        } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
+        } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING || boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_KING) {
             for (int i = 1; isEmptyCell(i,i,boardCells); i++) {
                     boardCells[oldX -i][oldY -i].setContent(BoardCell.Content.BLUE_PLACE);
             }
@@ -110,6 +112,8 @@ class MovingPawns {
             for( int i = -1; isEmptyCell(i,i*-1,boardCells); i --) {
                 boardCells[oldX -i][oldY-i*-1].setContent(BoardCell.Content.BLUE_PLACE);
             }
+
+
 
 
 
