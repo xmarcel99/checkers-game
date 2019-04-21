@@ -84,7 +84,7 @@ class MovingPawns {
 
         if (isWhitePawnTurn(whitePawnTurn,oldX,oldY,boardCells) ) {
             isSelect = true;
-        } else if (!whitePawnTurn && boardCells[oldX][oldY].getContent() != BoardCell.Content.RED_PAWN ) {
+        } else if (isRedPawnTurn(whitePawnTurn,oldX,oldY,boardCells) ) {
             isSelect = true;
         }else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_PAWN || boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_PAWN) {
             if ((oldX == 0 && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent() == BoardCell.Content.EMPTY)) {
@@ -184,8 +184,11 @@ class MovingPawns {
     }
 
     private static boolean isWhitePawnTurn (boolean isWhitePawnTurn ,int oldX , int oldY, BoardCell[][] boardCells) {
-
         return (boardCells[oldX][oldY].getContent() != BoardCell.Content.WHITE_PAWN && whitePawnTurn);
+    }
+
+    private static boolean isRedPawnTurn (boolean isRedPawnTurn, int oldX, int oldY , BoardCell[][] boardCells) {
+        return boardCells[oldX][oldY].getContent() != BoardCell.Content.RED_PAWN && !whitePawnTurn;
     }
 }
 
