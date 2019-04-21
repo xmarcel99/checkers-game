@@ -1,14 +1,18 @@
 package com.checkers;
 
+
 public class BoardCell  {
 
 
     public enum Content {
         EMPTY(999), WHITE_PAWN(1), RED_PAWN(-1), BLUE_PLACE(0), WHITE_KING(99),RED_KING(98);
-        int  content;
+        int content;
         Content(int content) {
             this.content = content;
         }
+        public   int getContentInInt() {return content;}
+        public Content getOppositeContent () {return new BoardCell(-getContentInInt()).getContent();}
+
 
     }
 
@@ -50,6 +54,8 @@ public class BoardCell  {
     public Content getContent() {
         return content;
     }
+
+
 
     public Color getCellColors() {
         return cellColors;
