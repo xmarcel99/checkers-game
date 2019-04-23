@@ -6,7 +6,6 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
 class MovingPawns {
-
     private static int oldX;
     private static int oldY;
     private static int newX;
@@ -16,12 +15,9 @@ class MovingPawns {
     private static boolean whitePawnTurn = true;
     private static int canLoopGo = 0;
 
-
     public static void addMovingPawnListener(List<BoardElement> boardElements, Board board) {
         addListeners(boardElements, board);
-
     }
-
     private static void addListeners(List<BoardElement> boardElements, Board board) {
         for (BoardElement element : boardElements) {
             element.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -32,7 +28,6 @@ class MovingPawns {
             });
         }
     }
-
     private static void addMouseClickListener(MouseEvent event, Board board) {
         BoardCell[][] boardCells = board.getBoardCells();
 
