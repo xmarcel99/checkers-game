@@ -5,7 +5,7 @@ public class BoardCell  {
 
 
     public enum Content {
-        EMPTY(999), WHITE_PAWN(1), RED_PAWN(-1), BLUE_PLACE(0), WHITE_KING(2),RED_KING(-2);
+        EMPTY(999), WHITE_PAWN(1), RED_PAWN(-1), BLUE_PLACE(0), WHITE_KING(1),RED_KING(-1);
         int content;
         Content(int content) {
             this.content = content;
