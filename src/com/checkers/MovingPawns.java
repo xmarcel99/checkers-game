@@ -80,16 +80,18 @@ class MovingPawns {
         if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_PAWN || boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_PAWN) {
             if (oldX == 7) {
                 boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
-                if (boardCells[oldX - 1][oldY - content.getContentInInt()].getContent() == content.getOppositeContent()) {
+                if (boardCells[oldX - 1][oldY - content.getContentInInt()].getContent().getContentInInt() == content.getOppositeContent().getContentInInt()) {
                     boardCells[oldX - 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.EMPTY);
                 }
-            } else if (oldX > 0 && boardCells[oldX - 1][oldY - content.getContentInInt()].getContent() == content.getOppositeContent() && isBlueCell(2, 2 * content.getContentInInt(), boardCells)) {
+            } else if (oldX > 0 && boardCells[oldX - 1][oldY - content.getContentInInt()].getContent().getContentInInt() == content.getOppositeContent().getContentInInt()
+                    && isBlueCell(2, 2 * content.getContentInInt(), boardCells)) {
                 if (isBlueCell(2, 2 * content.getContentInInt(), boardCells)) {
                     boardCells[oldX - 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.EMPTY);
                 }
             } else if (oldX + 1 == 7) {
                 boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
-            } else if (boardCells[oldX + 1][oldY - content.getContentInInt()].getContent() == content.getOppositeContent() && isBlueCell(-2, 2 * content.getContentInInt(), boardCells)  && isBlueCell(-2, 2 * content.getContentInInt(), boardCells)) {
+            } else if (boardCells[oldX + 1][oldY - content.getContentInInt()].getContent().getContentInInt() == content.getOppositeContent().getContentInInt()
+                    && isBlueCell(-2, 2 * content.getContentInInt(), boardCells)  && isBlueCell(-2, 2 * content.getContentInInt(), boardCells)) {
                     boardCells[oldX + 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.EMPTY);
             }
 
@@ -133,10 +135,8 @@ class MovingPawns {
     private static void showAllowedPawnMovesForNotKing (BoardCell[][] boardCells, BoardCell.Content content) {
         if ((oldX == 0 && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent() == BoardCell.Content.EMPTY)) {
             boardCells[oldX + 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
-        } else if ((oldX == 0 && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent() == content.getOppositeContent() && isEmptyCell(-2, 2 * content.getContentInInt(), boardCells))) {
-            if (isEmptyCell(-2, 2 * content.getContentInInt(), boardCells)) {
-                boardCells[oldX + 2][oldY - 2 * content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
-            }
+        } else if ((oldX == 0 && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent().getContentInInt() == content.getOppositeContent().getContentInInt() && isEmptyCell(-2, 2 * content.getContentInInt(), boardCells))) {
+            boardCells[oldX + 2][oldY - 2 * content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
         } else if (oldX == 1 && boardCells[oldX - 1][oldY - content.getContentInInt()].getContent() != BoardCell.Content.EMPTY && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent() == BoardCell.Content.EMPTY) {
             boardCells[oldX + 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
         } else if (oldX == 7 && boardCells[oldX - 1][oldY - content.getContentInInt()].getContent() == BoardCell.Content.EMPTY) {
@@ -144,22 +144,16 @@ class MovingPawns {
         } else if (oldX != 7 && oldX != 0 && boardCells[oldX - 1][oldY - content.getContentInInt()].getContent() == BoardCell.Content.EMPTY && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent() == BoardCell.Content.EMPTY) {
             boardCells[oldX - 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
             boardCells[oldX + 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
-        } else if (oldX > 1 && boardCells[oldX - 1][oldY - content.getContentInInt()].getContent() == content.getOppositeContent() && isEmptyCell(2, 2 * content.getContentInInt(), boardCells)) {
-            if (isEmptyCell(2, 2 * content.getContentInInt(), boardCells)) {
+        } else if (oldX > 1 && boardCells[oldX - 1][oldY - content.getContentInInt()].getContent().getContentInInt() == content.getOppositeContent().getContentInInt() && isEmptyCell(2, 2 * content.getContentInInt(), boardCells)) {
                 boardCells[oldX - 2][oldY - 2 * content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
-            }
-        } else if (oldX < 6 && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent() == content.getOppositeContent() && isEmptyCell(-2, 2 * content.getContentInInt(), boardCells)) {
-            if (isEmptyCell(-2, 2 * content.getContentInInt(), boardCells)) {
+        } else if (oldX < 6 && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent().getContentInInt() == content.getOppositeContent().getContentInInt() && isEmptyCell(-2, 2 * content.getContentInInt(), boardCells)) {
                 boardCells[oldX + 2][oldY - 2 * content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
-            }
         } else if (oldX > 0 && oldX < 7 && (boardCells[oldX - 1][oldY - content.getContentInInt()].getContent() != BoardCell.Content.EMPTY) && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent() == BoardCell.Content.EMPTY) {
             boardCells[oldX + 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
         } else if (oldX > 0 && oldX < 7 && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent() != BoardCell.Content.EMPTY && boardCells[oldX - 1][oldY - content.getContentInInt()].getContent() == BoardCell.Content.EMPTY) {
             boardCells[oldX - 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
-        } else if (oldX == 7 && boardCells[oldX - 1][oldY - content.getContentInInt()].getContent() == content.getOppositeContent() && isEmptyCell(2, 2 * content.getContentInInt(), boardCells)) {
-            if (isEmptyCell(2, 2 * content.getContentInInt(), boardCells)) {
+        } else if (oldX == 7 && boardCells[oldX - 1][oldY - content.getContentInInt()].getContent().getContentInInt() == content.getOppositeContent().getContentInInt() && isEmptyCell(2, 2 * content.getContentInInt(), boardCells)) {
                 boardCells[oldX - 2][oldY - 2 * content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
-            }
         }
         changePlayerTurn(boardCells[oldX][oldY].getContent());
     }
@@ -247,7 +241,6 @@ class MovingPawns {
         }
         return isStillRedPawnTurn;
     }
-
 
     public static void findAllowedPlacesForKing (BoardCell[][] boardCells, int k,int m,int v,int g, BoardCell.Content content) {
         boolean isTrue = true;
