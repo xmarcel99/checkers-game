@@ -1,18 +1,22 @@
 package com.checkers;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
-class MovingPawns {
+class MovingPawns implements Serializable {
+    private static final long serialVersionUID = 2L;
     private static int oldX;
     private static int oldY;
     private static int newX;
     private static int newY;
-    private static boolean isSelect = true;
+    public static boolean isSelect = true;
     private static BoardDrawer boardDrawer = new BoardDrawer();
-    private static boolean whitePawnTurn = true;
+    public static  boolean whitePawnTurn ;
+
+
 
     public static void addMovingPawnListener(List<BoardElement> boardElements, Board board) {
         addListeners(boardElements, board);
@@ -29,7 +33,6 @@ class MovingPawns {
     }
     private static void addMouseClickListener(MouseEvent event, Board board) {
         BoardCell[][] boardCells = board.getBoardCells();
-
         if (isSelect) {
             oldX = (int) event.getSceneX() / 100;
             oldY = (int) event.getSceneY() / 100;
@@ -174,6 +177,11 @@ class MovingPawns {
         redrawBoard(CheckersApp.readyBoard);
         isSelect = false;
         whitePawnTurn = content.getContentInInt() != 1;
+        try {
+            SaveAndLoadGameProgress.saveGameProgress(whitePawnTurn, "2.save");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
     private static void redrawBoard(Board board) {
         CheckersApp.boardGroup.getChildren().removeAll();

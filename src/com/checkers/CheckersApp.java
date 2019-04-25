@@ -24,13 +24,14 @@ public class CheckersApp extends Application {
         root.setPrefSize(width * partOfBoardSize, height * partOfBoardSize);
         root.getChildren().addAll(boardGroup);
         File file = new File("1.save");
+        File file1 = new File("2.save");
 
         if(file.exists() && file.isFile()) {
             try {
                 BoardCell[][] boardCells = (BoardCell[][]) SaveAndLoadGameProgress.loadGameProgress("1.save");
                 readyBoard.setBoardCells(boardCells);
 
-                for (int y = 0; y < height; y++)
+                for (int y = 0; y < height; y++){
                     for (int x = 0; x < width; x++) {
 
                         BoardCell boardCell = null;
@@ -50,13 +51,21 @@ public class CheckersApp extends Application {
                         }
                         boardCells[x][y] = boardCell;
                     }
-
+                }
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+            if(file1.exists() && file1.isFile()) {
+                try {
+                    MovingPawns.whitePawnTurn = (boolean) SaveAndLoadGameProgress.loadGameProgress("2.save");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
 
         }else  {
+            MovingPawns.whitePawnTurn = true;
             BoardCell[][] boardCells = readyBoard.getBoardCells();
 
             for (int y = 0; y < height; y++)

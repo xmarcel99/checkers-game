@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 public class SaveAndLoadGameProgress  {
 
-    public static void saveGameProgress(Serializable data , String fileName) throws  Exception{
+    public static void saveGameProgress(Serializable data, String fileName) throws  Exception{
         try{
             ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)));
             oos.writeObject(data);
