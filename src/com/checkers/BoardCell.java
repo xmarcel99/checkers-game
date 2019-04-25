@@ -1,6 +1,5 @@
 package com.checkers;
 
-
 public class BoardCell  {
 
 

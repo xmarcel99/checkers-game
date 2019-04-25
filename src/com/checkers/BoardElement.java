@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
 
 import static com.checkers.CheckersApp.partOfBoardSize;
 
-public class BoardElement extends StackPane {
+public class BoardElement extends StackPane  {
 
 
     public BoardElement(BoardCell boardCell) {
