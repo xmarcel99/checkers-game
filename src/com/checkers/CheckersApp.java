@@ -27,7 +27,31 @@ public class CheckersApp extends Application {
 
         if(file.exists() && file.isFile()) {
             try {
-                readyBoard = (Board) SaveAndLoadGameProgress.loadGameProgress("1.save");
+                BoardCell[][] boardCells = (BoardCell[][]) SaveAndLoadGameProgress.loadGameProgress("1.save");
+                readyBoard.setBoardCells(boardCells);
+
+                for (int y = 0; y < height; y++)
+                    for (int x = 0; x < width; x++) {
+
+                        BoardCell boardCell = null;
+                        if ((x + y) % 2 == 0) {
+                            boardCell = readyBoard.getBoardCells()[x][y];
+
+                        } else {
+                            if (y <= 2) {
+                                boardCell = readyBoard.getBoardCells()[x][y];
+                            }
+                            if (y >= 5) {
+                                boardCell = readyBoard.getBoardCells()[x][y];
+                            }
+                            if (y > 2 && y < 5) {
+                                boardCell = readyBoard.getBoardCells()[x][y];
+                            }
+                        }
+                        boardCells[x][y] = boardCell;
+                    }
+
+
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

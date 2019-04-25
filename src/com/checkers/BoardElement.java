@@ -11,6 +11,7 @@ public class BoardElement extends StackPane  {
 
 
     public BoardElement(BoardCell boardCell) {
+
         int x = boardCell.getX();
         int y = boardCell.getY();
 

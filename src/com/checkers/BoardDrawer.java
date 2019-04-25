@@ -1,12 +1,8 @@
 package com.checkers;
-
-
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class BoardDrawer {
-
     public List<BoardElement> draw(Board board) {
 
         List<BoardElement> elements = new ArrayList<>();

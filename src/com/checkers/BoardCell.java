@@ -1,8 +1,10 @@
 package com.checkers;
 
-public class BoardCell  {
+import java.io.Serializable;
 
+public class BoardCell implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     public enum Content {
         EMPTY(999), WHITE_PAWN(1), RED_PAWN(-1), BLUE_PLACE(0), WHITE_KING(1),RED_KING(-1);
         int content;
@@ -83,6 +85,7 @@ public class BoardCell  {
     public void setY(int y) {
         this.y = y;
     }
+
 }
 
 

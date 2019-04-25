@@ -117,7 +117,7 @@ class MovingPawns {
             boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
         }
         try {
-            SaveAndLoadGameProgress.saveGameProgress(CheckersApp.readyBoard, "1.save");
+            SaveAndLoadGameProgress.saveGameProgress(boardCells, "1.save");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
