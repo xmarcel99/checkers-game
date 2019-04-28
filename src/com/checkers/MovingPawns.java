@@ -140,12 +140,22 @@ class MovingPawns implements Serializable {
         } else if (oldX == 7 && boardCells[oldX - 1][oldY - content.getContentInInt()].getContent().getContentInInt() == content.getOppositeContent().getContentInInt() && isEmptyCell(2, 2 * content.getContentInInt(), boardCells)) {
             boardCells[oldX - 2][oldY - 2 * content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
         }
-        changePlayerTurn(boardCells[oldX][oldY].getContent());
+        changePlayerTurn(boardCells[oldX][oldY].getContent(),boardCells);
     }
     private static void eventMovingPawnToAllowedPlace( BoardCell[][] boardCells) {
         if (boardCells[newX][newY].getContent() == BoardCell.Content.BLUE_PLACE) {
+            try {
+                SaveAndLoadGameProgress.saveGameProgress(whitePawnTurn, "2.save");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
             movePawnToBluePlace(newX, newY, oldX, oldY, boardCells[oldX][oldY].getContent());
         } else if (boardCells[newX][newY].getContent() != BoardCell.Content.BLUE_PLACE) {
+            try {
+                SaveAndLoadGameProgress.saveGameProgress(!whitePawnTurn, "2.save");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
             if (boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_PAWN ||boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_KING ) {
                 whitePawnTurn = true;
             } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_PAWN || boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
@@ -163,17 +173,12 @@ class MovingPawns implements Serializable {
         findAllowedPlacesForKing(boardCells,-1,-8,1,1, BoardCell.Content.RED_PAWN);
         findAllowedPlacesForKing(boardCells,1,8,-1,-1, BoardCell.Content.WHITE_PAWN);
         findAllowedPlacesForKing(boardCells,-1,-8,-1,-1, BoardCell.Content.RED_PAWN);
-        changePlayerTurn(boardCells[oldX][oldY].getContent());
+        changePlayerTurn(boardCells[oldX][oldY].getContent(),boardCells);
     }
-    private static  void changePlayerTurn (BoardCell.Content content) {
-        redrawBoard(CheckersApp.readyBoard);
-        isSelect = false;
-        whitePawnTurn = content.getContentInInt() != 1;
-        try {
-            SaveAndLoadGameProgress.saveGameProgress(!whitePawnTurn, "2.save");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    private static  void changePlayerTurn (BoardCell.Content content, BoardCell[][] boardCells) {
+            redrawBoard(CheckersApp.readyBoard);
+            isSelect = false;
+            whitePawnTurn = content.getContentInInt() != 1;
     }
     public static void redrawBoard(Board board) {
         CheckersApp.boardGroup.getChildren().removeAll();

@@ -61,7 +61,7 @@ public class CheckersApp extends Application {
             }
             if (file1.exists() && file1.isFile()) {
                 try {
-                    MovingPawns.whitePawnTurn = (boolean) SaveAndLoadGameProgress.loadGameProgress("2.save");
+                    MovingPawns.whitePawnTurn = ((boolean) SaveAndLoadGameProgress.loadGameProgress("2.save"));
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
