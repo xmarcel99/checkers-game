@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import static com.checkers.MovingPawns.redrawBoard;
+
 
 public class CheckersApp extends Application {
 
@@ -26,12 +28,13 @@ public class CheckersApp extends Application {
         File file = new File("1.save");
         File file1 = new File("2.save");
 
-        if(file.exists() && file.isFile()) {
+        if (file.exists() && file.isFile()) {
             try {
                 BoardCell[][] boardCells = (BoardCell[][]) SaveAndLoadGameProgress.loadGameProgress("1.save");
                 readyBoard.setBoardCells(boardCells);
-
-                for (int y = 0; y < height; y++){
+                MovingPawns.removeAllBluePlacesForBoard(readyBoard);
+                redrawBoard(readyBoard);
+                for (int y = 0; y < height; y++) {
                     for (int x = 0; x < width; x++) {
 
                         BoardCell boardCell = null;
@@ -56,7 +59,7 @@ public class CheckersApp extends Application {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-            if(file1.exists() && file1.isFile()) {
+            if (file1.exists() && file1.isFile()) {
                 try {
                     MovingPawns.whitePawnTurn = (boolean) SaveAndLoadGameProgress.loadGameProgress("2.save");
                 } catch (Exception e) {
@@ -64,7 +67,7 @@ public class CheckersApp extends Application {
                 }
             }
 
-        }else  {
+        } else {
             MovingPawns.whitePawnTurn = true;
             BoardCell[][] boardCells = readyBoard.getBoardCells();
 
