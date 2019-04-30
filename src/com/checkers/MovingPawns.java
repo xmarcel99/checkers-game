@@ -196,7 +196,7 @@ class MovingPawns implements Serializable {
         }
         return boardCells[oldX - i][oldY - i2].getContent() == BoardCell.Content.EMPTY;
     }
-    private static boolean isBlueCellForKings(int i, int i2, BoardCell[][] boardCells) {
+   public static boolean isBlueCellForKings(int i, int i2, BoardCell[][] boardCells) {
         if (newX - i < 0 || newX - i > 7 || newY - i2 < 0 || newY - i2 > 7) {
             return false;
         }
