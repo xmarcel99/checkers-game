@@ -17,15 +17,12 @@ public class ComputerMovement {
         }
         return boardCells[oldX - i][oldY - i2].getContent().getContentInInt() == 1;
     }
-
     private static boolean isAllowedPlace(int newX, int newY, int i, int i2, BoardCell[][] boardCells) {
         if (newX - i < 0 || newX - i > 7 || newY - i2 < 0 || newY - i2 > 7) {
             return false;
         }
         return boardCells[newX - i][newY - i2].getContent() == BoardCell.Content.EMPTY || boardCells[newX - i][newY - i2].getContent() == BoardCell.Content.RED_KING;
-
     }
-
     private static void randomAllowedPlaceForComputerKing(int oldX, int oldY, BoardCell[][] boardCells) {
         Random random = new Random();
         int randomNumber = random.nextInt(allowedPlacesToMove.size());
@@ -35,7 +32,6 @@ public class ComputerMovement {
             boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
         }
     }
-
     public static void findAllowedPlacesForComputerKing(int oldX, int oldY, BoardCell[][] boardCells, int k, int m, int v, int g, BoardCell.Content content) {
         boolean isTrue = true;
         for (int i = k; isTrue; i += content == BoardCell.Content.WHITE_PAWN ? +1 : -1) {
@@ -60,7 +56,6 @@ public class ComputerMovement {
         }
         randomAllowedPlaceForComputerKing(oldX, oldY, boardCells);
     }
-
     public static void computerMovement(Board board) {
         boolean canLoopGo = true;
         BoardCell[][] boardCells = board.getBoardCells();
