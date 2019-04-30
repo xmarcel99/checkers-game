@@ -29,17 +29,6 @@ public class ComputerMovement {
         boardCells[randomAllowedPlace.getNewX()][randomAllowedPlace.getNewY()].setContent(BoardCell.Content.RED_KING);
         if(randomAllowedPlace.getNewX() != oldX) {
             boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
-            if(newY < 6 && newY > 1) {
-                if (isAllowedPlace(newX, newY, -2, -2, boardCells)) {
-                    boardCells[newX + 1][newY + 1].setContent(BoardCell.Content.EMPTY);
-                } else if (isAllowedPlace(newX, newY, 2, 2, boardCells)) {
-                    boardCells[newX - 1][newY - 1].setContent(BoardCell.Content.EMPTY);
-                } else if (isAllowedPlace(newX, newY, -2, 2, boardCells)) {
-                    boardCells[newX + 1][newY - 1].setContent(BoardCell.Content.EMPTY);
-                } else if (isAllowedPlace(newX, newY, 2, -2, boardCells)) {
-                    boardCells[newX - 1][newY + 1].setContent(BoardCell.Content.EMPTY);
-                }
-            }
         }
     }
     public static void findAllowedPlacesForComputerKing(int oldX, int oldY,BoardCell[][] boardCells, int k, int m, int v, int g, BoardCell.Content content) {
@@ -128,6 +117,17 @@ public class ComputerMovement {
                                 findAllowedPlacesForComputerKing(oldX, oldY, boardCells, -1, -8, -1, -1, BoardCell.Content.RED_PAWN);
                             }
                             randomAllowedPlaceForComputerKing(oldX,oldY,boardCells);
+                        if(newY < 6 && newY > 1) {
+                            if (isAllowedPlace(newX, newY, -2, -2, boardCells)) {
+                                boardCells[newX + 1][newY + 1].setContent(BoardCell.Content.EMPTY);
+                            } else if (isAllowedPlace(newX, newY, 2, 2, boardCells)) {
+                                boardCells[newX - 1][newY - 1].setContent(BoardCell.Content.EMPTY);
+                            } else if (isAllowedPlace(newX, newY, -2, 2, boardCells)) {
+                                boardCells[newX + 1][newY - 1].setContent(BoardCell.Content.EMPTY);
+                            } else if (isAllowedPlace(newX, newY, 2, -2, boardCells)) {
+                                boardCells[newX - 1][newY + 1].setContent(BoardCell.Content.EMPTY);
+                            }
+                        }
                             canLoopGo = false;
                     }
                 }
