@@ -3,48 +3,53 @@ package com.checkers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import static com.checkers.MovingPawns.isEmptyCell;
 
 public class ComputerMovement {
     private static int newX;
-    private  static  int newY;
-    static List<CoordinatesOfAloowedPlacesToMove> allowedPlacesToMove = new ArrayList<>();
+    private static int newY;
+    private static List<CoordinatesOfAloowedPlacesToMove> allowedPlacesToMove = new ArrayList<>();
+
     private static boolean isEnemyPawn(int oldX, int oldY, int i, int i2, BoardCell[][] boardCells) {
         if (oldX - i < 0 || oldX - i > 7 || oldY - i2 < 0 || oldY - i2 > 7) {
             return false;
         }
         return boardCells[oldX - i][oldY - i2].getContent().getContentInInt() == 1;
     }
-    private static boolean isAllowedPlace(int newX,int newY,int i, int i2, BoardCell[][] boardCells) {
+
+    private static boolean isAllowedPlace(int newX, int newY, int i, int i2, BoardCell[][] boardCells) {
         if (newX - i < 0 || newX - i > 7 || newY - i2 < 0 || newY - i2 > 7) {
             return false;
         }
         return boardCells[newX - i][newY - i2].getContent() == BoardCell.Content.EMPTY || boardCells[newX - i][newY - i2].getContent() == BoardCell.Content.RED_KING;
 
     }
-    private static void randomAllowedPlaceForComputerKing(int oldX, int oldY,BoardCell[][] boardCells) {
+
+    private static void randomAllowedPlaceForComputerKing(int oldX, int oldY, BoardCell[][] boardCells) {
         Random random = new Random();
-        int randomNumber  = random.nextInt(allowedPlacesToMove.size());
+        int randomNumber = random.nextInt(allowedPlacesToMove.size());
         CoordinatesOfAloowedPlacesToMove randomAllowedPlace = allowedPlacesToMove.get(randomNumber);
         boardCells[randomAllowedPlace.getNewX()][randomAllowedPlace.getNewY()].setContent(BoardCell.Content.RED_KING);
-        if(randomAllowedPlace.getNewX() != oldX) {
+        if (randomAllowedPlace.getNewX() != oldX) {
             boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
         }
     }
-    public static void findAllowedPlacesForComputerKing(int oldX, int oldY,BoardCell[][] boardCells, int k, int m, int v, int g, BoardCell.Content content) {
+
+    public static void findAllowedPlacesForComputerKing(int oldX, int oldY, BoardCell[][] boardCells, int k, int m, int v, int g, BoardCell.Content content) {
         boolean isTrue = true;
         for (int i = k; isTrue; i += content == BoardCell.Content.WHITE_PAWN ? +1 : -1) {
-            newX = oldX -i;
-            newY = oldY -i*v;
+            newX = oldX - i;
+            newY = oldY - i * v;
             if (isEmptyCell(oldX, oldY, i, i * v, boardCells)) {
                 if (boardCells[oldX - i + content.getContentInInt()][oldY - i * v + content.getContentInInt() * g].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING ||
                         boardCells[oldX - i + content.getContentInInt()][oldY - i * v + content.getContentInInt() * g].getContent() == BoardCell.Content.WHITE_KING && boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
-                    allowedPlacesToMove.add(new CoordinatesOfAloowedPlacesToMove(newX,newY));
+                    allowedPlacesToMove.add(new CoordinatesOfAloowedPlacesToMove(newX, newY));
                     break;
-                } else if(boardCells[oldX - i + content.getContentInInt()][oldY - i * v + content.getContentInInt() * g].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
+                } else if (boardCells[oldX - i + content.getContentInInt()][oldY - i * v + content.getContentInInt() * g].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
                     break;
                 } else {
-                    allowedPlacesToMove.add(new CoordinatesOfAloowedPlacesToMove(newX,newY));
+                    allowedPlacesToMove.add(new CoordinatesOfAloowedPlacesToMove(newX, newY));
                 }
             }
             if (content == BoardCell.Content.WHITE_PAWN) {
@@ -53,8 +58,9 @@ public class ComputerMovement {
                 isTrue = i > m;
             }
         }
-        randomAllowedPlaceForComputerKing(oldX,oldY,boardCells);
+        randomAllowedPlaceForComputerKing(oldX, oldY, boardCells);
     }
+
     public static void computerMovement(Board board) {
         boolean canLoopGo = true;
         BoardCell[][] boardCells = board.getBoardCells();
@@ -105,19 +111,21 @@ public class ComputerMovement {
                         }
                     } else if (y.getContent() == BoardCell.Content.RED_KING) {
                         Random random = new Random();
-                            int wayForKingNumber = random.nextInt(4);
-                            System.out.println(wayForKingNumber);
-                            if (oldY == 7 || wayForKingNumber == 0) {
-                                findAllowedPlacesForComputerKing(oldX, oldY, boardCells, 1, 8, 1, 1, BoardCell.Content.WHITE_PAWN);
-                            } else if (wayForKingNumber == 1) {
-                                findAllowedPlacesForComputerKing(oldX, oldY, boardCells, -1, -8, 1, 1, BoardCell.Content.RED_PAWN);
-                            } else if (wayForKingNumber == 2) {
-                                findAllowedPlacesForComputerKing(oldX, oldY, boardCells, 1, 8, -1, -1, BoardCell.Content.WHITE_PAWN);
-                            } else if (wayForKingNumber == 3) {
-                                findAllowedPlacesForComputerKing(oldX, oldY, boardCells, -1, -8, -1, -1, BoardCell.Content.RED_PAWN);
-                            }
-                            randomAllowedPlaceForComputerKing(oldX,oldY,boardCells);
-                        if(newY < 6 && newY > 1) {
+                        int wayForKingNumber = random.nextInt(4);
+                        System.out.println(wayForKingNumber);
+                        if (oldY == 7 || wayForKingNumber == 0) {
+                            findAllowedPlacesForComputerKing(oldX, oldY, boardCells, 1, 8, 1, 1, BoardCell.Content.WHITE_PAWN);
+                        } else if (wayForKingNumber == 1) {
+                            findAllowedPlacesForComputerKing(oldX, oldY, boardCells, -1, -8, 1, 1, BoardCell.Content.RED_PAWN);
+                        } else if (wayForKingNumber == 2) {
+                            findAllowedPlacesForComputerKing(oldX, oldY, boardCells, 1, 8, -1, -1, BoardCell.Content.WHITE_PAWN);
+                        } else if (wayForKingNumber == 3) {
+                            findAllowedPlacesForComputerKing(oldX, oldY, boardCells, -1, -8, -1, -1, BoardCell.Content.RED_PAWN);
+                        }
+                        randomAllowedPlaceForComputerKing(oldX, oldY, boardCells);
+
+
+                        if (newY < 6 && newY > 1) {
                             if (isAllowedPlace(newX, newY, -2, -2, boardCells)) {
                                 boardCells[newX + 1][newY + 1].setContent(BoardCell.Content.EMPTY);
                             } else if (isAllowedPlace(newX, newY, 2, 2, boardCells)) {
@@ -128,7 +136,7 @@ public class ComputerMovement {
                                 boardCells[newX - 1][newY + 1].setContent(BoardCell.Content.EMPTY);
                             }
                         }
-                            canLoopGo = false;
+                        canLoopGo = false;
                     }
                 }
             }
