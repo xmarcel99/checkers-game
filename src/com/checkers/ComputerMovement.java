@@ -15,14 +15,31 @@ public class ComputerMovement {
         }
         return boardCells[oldX - i][oldY - i2].getContent().getContentInInt() == 1;
     }
+    private static boolean isAllowedPlace(int newX,int newY,int i, int i2, BoardCell[][] boardCells) {
+        if (newX - i < 0 || newX - i > 7 || newY - i2 < 0 || newY - i2 > 7) {
+            return false;
+        }
+        return boardCells[newX - i][newY - i2].getContent() == BoardCell.Content.EMPTY || boardCells[newX - i][newY - i2].getContent() == BoardCell.Content.RED_KING;
 
-    private static void randomAlowedPlaceForComputerKing(int oldX, int oldY,BoardCell[][] boardCells) {
+    }
+    private static void randomAllowedPlaceForComputerKing(int oldX, int oldY,BoardCell[][] boardCells) {
         Random random = new Random();
         int randomNumber  = random.nextInt(allowedPlacesToMove.size());
         CoordinatesOfAloowedPlacesToMove randomAllowedPlace = allowedPlacesToMove.get(randomNumber);
         boardCells[randomAllowedPlace.getNewX()][randomAllowedPlace.getNewY()].setContent(BoardCell.Content.RED_KING);
         if(randomAllowedPlace.getNewX() != oldX) {
             boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
+            if(newY < 6 && newY > 1) {
+                if (isAllowedPlace(newX, newY, -2, -2, boardCells)) {
+                    boardCells[newX + 1][newY + 1].setContent(BoardCell.Content.EMPTY);
+                } else if (isAllowedPlace(newX, newY, 2, 2, boardCells)) {
+                    boardCells[newX - 1][newY - 1].setContent(BoardCell.Content.EMPTY);
+                } else if (isAllowedPlace(newX, newY, -2, 2, boardCells)) {
+                    boardCells[newX + 1][newY - 1].setContent(BoardCell.Content.EMPTY);
+                } else if (isAllowedPlace(newX, newY, 2, -2, boardCells)) {
+                    boardCells[newX - 1][newY + 1].setContent(BoardCell.Content.EMPTY);
+                }
+            }
         }
     }
     public static void findAllowedPlacesForComputerKing(int oldX, int oldY,BoardCell[][] boardCells, int k, int m, int v, int g, BoardCell.Content content) {
@@ -47,7 +64,7 @@ public class ComputerMovement {
                 isTrue = i > m;
             }
         }
-        randomAlowedPlaceForComputerKing(oldX,oldY,boardCells);
+        randomAllowedPlaceForComputerKing(oldX,oldY,boardCells);
     }
     public static void computerMovement(Board board) {
         boolean canLoopGo = true;
@@ -110,7 +127,7 @@ public class ComputerMovement {
                             } else if (wayForKingNumber == 3) {
                                 findAllowedPlacesForComputerKing(oldX, oldY, boardCells, -1, -8, -1, -1, BoardCell.Content.RED_PAWN);
                             }
-                            randomAlowedPlaceForComputerKing(oldX,oldY,boardCells);
+                            randomAllowedPlaceForComputerKing(oldX,oldY,boardCells);
                             canLoopGo = false;
                     }
                 }
