@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/com/checkers/MovingPawns.java" line="228" mnemonic="9" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="556e6399-996b-4ca7-8825-17edb7cdb7f1" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/checkers/CheckersApp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/checkers/MovingPawns.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="198" column="25" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/checkers/ComputerMovement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="975">
+              <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/checkers/CoordinatesOfAloowedPlacesToMove.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="65" selection-start-line="6" selection-start-column="65" selection-end-line="6" selection-end-column="65" />
+              <folding>
+                <element signature="e#335#336#0" expanded="true" />
+                <element signature="e#362#363#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/checkers/BoardElement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/checkers/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/checkers/BoardCell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/checkers/BoardDrawer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="21" selection-start-column="21" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>isStillWhitePawnTurn</find>
+      <find>chan</find>
+      <find>redr</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/com/checkers/Tile.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/PieceType.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/Piece.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/PawnType.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/Pawn.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/BoardAndPawn.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/BoardCell2.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/DrawCellWithPawn.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/DrawnPawn.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/Board2.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/PawnMove.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/MoveType.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/MoveResult.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/PawnMoving.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/Warcaby.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/MovinPawn.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/Moving.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/ExceptionWithCoordinates.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/SaveAndLoadGame.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/LoadGame.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/SaveGame.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/Rozmowa.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/BoardDrawer.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/Board.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/BoardElement.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/BoardCell.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/SaveAndLoadGameProgress.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/GameMenu.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/CheckersApp.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/MenuSample.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/MovingPawns.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/CoordinatesOfAloowedPlacesToMove.java" />
+        <option value="$PROJECT_DIR$/src/com/checkers/ComputerMovement.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="169" />
+    <option name="y" value="152" />
+    <option name="width" value="1596" />
+    <option name="height" value="1028" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="checkers-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="checkers-game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="checkers-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="checkers-game" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="checkers-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="checkers-game" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="checkers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="checkers-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556707797816" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kodilla.Main" />
+      <module name="checkers-game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kodilla.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.checkers.CheckersApp" />
+      <module name="checkers-game" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MenuSample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MenuSample" />
+      <module name="checkers-game" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Warcaby" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Warcaby" />
+      <module name="checkers-game" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Main (1)" />
+      <item itemvalue="Application.Warcaby" />
+      <item itemvalue="Application.MenuSample" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.MenuSample" />
+        <item itemvalue="Application.Warcaby" />
+        <item itemvalue="Application.Main (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="556e6399-996b-4ca7-8825-17edb7cdb7f1" name="Default Changelist" comment="" />
+      <created>1554280938312</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554280938312</updated>
+      <workItem from="1554280941671" duration="5236000" />
+      <workItem from="1554287833622" duration="3426000" />
+      <workItem from="1554298912594" duration="4594000" />
+      <workItem from="1554313907368" duration="4754000" />
+      <workItem from="1554367929671" duration="5024000" />
+      <workItem from="1554380723610" duration="8457000" />
+      <workItem from="1554543307074" duration="7748000" />
+      <workItem from="1554557320152" duration="3780000" />
+      <workItem from="1554629506670" duration="1062000" />
+      <workItem from="1554651475359" duration="3346000" />
+      <workItem from="1554656155282" duration="5386000" />
+      <workItem from="1554662538744" duration="4304000" />
+      <workItem from="1554750582384" duration="4586000" />
+      <workItem from="1554834394954" duration="9528000" />
+      <workItem from="1554881688443" duration="6676000" />
+      <workItem from="1554910644989" duration="23653000" />
+      <workItem from="1555072820341" duration="3626000" />
+      <workItem from="1555087102954" duration="10247000" />
+      <workItem from="1555309235299" duration="7605000" />
+      <workItem from="1555323369563" duration="8461000" />
+      <workItem from="1555357924550" duration="13124000" />
+      <workItem from="1555413757973" duration="3354000" />
+      <workItem from="1555449794818" duration="10967000" />
+      <workItem from="1555513605790" duration="3078000" />
+      <workItem from="1555523545946" duration="1617000" />
+      <workItem from="1555571857576" duration="12376000" />
+      <workItem from="1555594876256" duration="6128000" />
+      <workItem from="1555666109864" duration="3360000" />
+      <workItem from="1555761781414" duration="10547000" />
+      <workItem from="1555793876522" duration="1752000" />
+      <workItem from="1555833820434" duration="8422000" />
+      <workItem from="1555874256813" duration="5488000" />
+      <workItem from="1555926612332" duration="147000" />
+      <workItem from="1555927924384" duration="1839000" />
+      <workItem from="1555937798140" duration="1894000" />
+      <workItem from="1556012582096" duration="8616000" />
+      <workItem from="1556032665324" duration="10215000" />
+      <workItem from="1556049874839" duration="2146000" />
+      <workItem from="1556114295085" duration="4212000" />
+      <workItem from="1556120955778" duration="2488000" />
+      <workItem from="1556174179416" duration="13029000" />
+      <workItem from="1556196510915" duration="8182000" />
+      <workItem from="1556220135043" duration="4462000" />
+      <workItem from="1556437512005" duration="26251000" />
+      <workItem from="1556471590676" duration="5684000" />
+      <workItem from="1556524489169" duration="32446000" />
+      <workItem from="1556637254965" duration="9496000" />
+      <workItem from="1556647005152" duration="598000" />
+      <workItem from="1556697867126" duration="9799000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="353216000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1" y="0" width="1922" height="1053" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.35912487" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32975295" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4994664" weight="0.26638025" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39849624" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.37486574" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053364" side_tool="true" weight="0.264232" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32760474" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="Arrays.stream(boardCells).flatMap(Arrays::stream).filter(x -&gt; x.getContent() == BoardCell.Content.BLUE_PLACE).collect(Collectors.toList())" language="JAVA" custom="java.util.stream.Collectors,java.util.Arrays" />
+        <watch expression="int z = kill;" language="JAVA" />
+        <watch expression="isEnemyPawn(oldX,oldY,i,i,boardCells)" language="JAVA" />
+        <watch expression="isEmptyCell(oldX,oldY,i-1,i-1,boardCells)" language="JAVA" />
+        <watch expression="Arrays.stream(boardCells).flatMap(Arrays::stream).filter(x -&gt; x.getContent() == BoardCell.Content.BLUE_PLACE).collect(Collectors.toList())" language="JAVA" />
+        <watch expression="Arrays.stream(boardCells).flatMap(Arrays::stream).filter(x -&gt; x.getContent() == BoardCell.Content.BLUE_PLACE).collect(Collectors.toList())" language="JAVA" />
+        <watch expression="int x = -i + 1" language="JAVA" />
+        <watch expression="newX" language="JAVA" />
+        <watch expression="newY" language="JAVA" />
+        <watch expression="int w = -i" language="JAVA" />
+        <watch expression="kill" language="JAVA" />
+        <watch expression="int w = kill;" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>int z = kill;</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>int w = kill;</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>kill</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>newY</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>newX</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>int w = -i</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>int x = -i + 1</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>isEmptyCell(oldX,oldY,i-1,i-1,boardCells)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>isEnemyPawn(oldX,oldY,i,i,boardCells)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Arrays.stream(boardCells).flatMap(Arrays::stream).filter(x -&gt; x.getContent() == BoardCell.Content.BLUE_PLACE).collect(Collectors.toList())</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/PawnType.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/BoardAndPawn.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/CellMove.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/PawnMove.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/Movin.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/MoveType.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/MoveResult.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/PawnMoving.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/ExceptionWithCoordinates.java" />
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/javafx/application/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="304" column="25" selection-start-line="304" selection-start-column="25" selection-end-line="304" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Comparable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="95" column="17" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Integer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="1214" column="15" selection-start-line="1214" selection-start-column="15" selection-end-line="1214" selection-end-column="15" />
+          <folding>
+            <element signature="e#46394#46395#0" expanded="true" />
+            <element signature="e#46458#46459#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/Rozmowa.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/SaveGame.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/LoadGame.java" />
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="388" selection-start-line="388" selection-end-line="388" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/jre/lib/rt.jar!/sun/launcher/LauncherHelper.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/SaveAndLoadGameProgress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/GameMenu.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/MenuSample.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/CheckersApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/BoardElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/BoardCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/BoardDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/CoordinatesOfAloowedPlacesToMove.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="65" selection-start-line="6" selection-start-column="65" selection-end-line="6" selection-end-column="65" />
+          <folding>
+            <element signature="e#335#336#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/MovingPawns.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="198" column="25" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/checkers/ComputerMovement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
