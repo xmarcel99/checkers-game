@@ -21,6 +21,7 @@ class MovingPawns implements Serializable {
     public static void addMovingPawnListener(List<BoardElement> boardElements, Board board) {
         addListeners(boardElements, board);
     }
+
     private static void addListeners(List<BoardElement> boardElements, Board board) {
         for (BoardElement element : boardElements) {
             element.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -31,6 +32,7 @@ class MovingPawns implements Serializable {
             });
         }
     }
+
     private static void addMouseClickListener(MouseEvent event, Board board) {
         BoardCell[][] boardCells = board.getBoardCells();
 
@@ -50,6 +52,7 @@ class MovingPawns implements Serializable {
             isSelect = true;
         }
     }
+
     private static void showAllowedPawnMoves(Board boardCellsReady, int oldX, int oldY) {
         BoardCell[][] boardCells = boardCellsReady.getBoardCells();
 
@@ -63,6 +66,7 @@ class MovingPawns implements Serializable {
             showAllowedPawnMovesForNotKing(boardCells, boardCells[oldX][oldY].getContent());
         }
     }
+
     private static void movePawnToBluePlace(int newX, int newY, int oldX, int oldY, BoardCell.Content content) {
         BoardCell[][] boardCells = CheckersApp.readyBoard.getBoardCells();
 
@@ -121,6 +125,7 @@ class MovingPawns implements Serializable {
             System.out.println(e.getMessage());
         }
     }
+
     private static void showAllowedPawnMovesForNotKing(BoardCell[][] boardCells, BoardCell.Content content) {
         if ((oldX == 0 && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent() == BoardCell.Content.EMPTY)) {
             boardCells[oldX + 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
@@ -146,6 +151,7 @@ class MovingPawns implements Serializable {
         }
         changePlayerTurn(boardCells[oldX][oldY].getContent(), boardCells);
     }
+
     private static void eventMovingPawnToAllowedPlace(BoardCell[][] boardCells) {
         if (boardCells[newX][newY].getContent() == BoardCell.Content.BLUE_PLACE) {
             movePawnToBluePlace(newX, newY, oldX, oldY, boardCells[oldX][oldY].getContent());
@@ -168,47 +174,55 @@ class MovingPawns implements Serializable {
             }
         }
     }
+
     private static void eventShowingAllowedPawnMoves(BoardCell[][] boardCells, Board board) {
         if (boardCells[oldX][oldY].getContent() != BoardCell.Content.EMPTY) {
             showAllowedPawnMoves(board, oldX, oldY);
         }
     }
+
     private static void showAllowedPawnMovesForKing(BoardCell[][] boardCells) {
-        findAllowedPlacesForKing(boardCells, 1, 8, 1, 1, BoardCell.Content.WHITE_PAWN);
-        findAllowedPlacesForKing(boardCells, -1, -8, 1, 1, BoardCell.Content.RED_PAWN);
-        findAllowedPlacesForKing(boardCells, 1, 8, -1, -1, BoardCell.Content.WHITE_PAWN);
-        findAllowedPlacesForKing(boardCells, -1, -8, -1, -1, BoardCell.Content.RED_PAWN);
+        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, 1, 8, 1, 1, BoardCell.Content.WHITE_PAWN, oldX, oldY);
+        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, -1, -8, 1, 1, BoardCell.Content.RED_PAWN, oldX, oldY);
+        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, 1, 8, -1, -1, BoardCell.Content.WHITE_PAWN, oldX, oldY);
+        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, -1, -8, -1, -1, BoardCell.Content.RED_PAWN, oldX, oldY);
         changePlayerTurn(boardCells[oldX][oldY].getContent(), boardCells);
     }
+
     private static void changePlayerTurn(BoardCell.Content content, BoardCell[][] boardCells) {
         redrawBoard(CheckersApp.readyBoard);
         isSelect = false;
     }
+
     public static void redrawBoard(Board board) {
         CheckersApp.boardGroup.getChildren().removeAll();
         List<BoardElement> elementsToDraw = boardDrawer.draw(board);
         addListeners(elementsToDraw, board);
         CheckersApp.boardGroup.getChildren().addAll(elementsToDraw);
     }
+
     public static boolean isEmptyCell(int oldX, int oldY, int i, int i2, BoardCell[][] boardCells) {
         if (oldX - i < 0 || oldX - i > 7 || oldY - i2 < 0 || oldY - i2 > 7) {
             return false;
         }
         return boardCells[oldX - i][oldY - i2].getContent() == BoardCell.Content.EMPTY;
     }
-   public static boolean isBlueCellForKings(int i, int i2, BoardCell[][] boardCells) {
+
+    public static boolean isBlueCellForKings(int i, int i2, BoardCell[][] boardCells) {
         if (newX - i < 0 || newX - i > 7 || newY - i2 < 0 || newY - i2 > 7) {
             return false;
         }
         return boardCells[newX - i][newY - i2].getContent() == BoardCell.Content.BLUE_PLACE || boardCells[newX - i][newY - i2].getContent() == BoardCell.Content.RED_KING
                 || boardCells[newX - i][newY - i2].getContent() == BoardCell.Content.WHITE_KING;
     }
+
     private static boolean isBlueCell(int i, int i2, BoardCell[][] boardCells) {
         if (oldX - i < 0 || oldX - i > 7 || oldY - i2 < 0 || oldY - i2 > 7) {
             return false;
         }
         return boardCells[oldX - i][oldY - i2].getContent() == BoardCell.Content.BLUE_PLACE;
     }
+
     private static boolean isStillWhitePawnTurn(boolean isWhitePawnTurn, int oldX, int oldY, BoardCell[][] boardCells) {
         boolean isStillWhitePawnTurn = false;
         if (boardCells[oldX][oldY].getContent() != BoardCell.Content.WHITE_PAWN && isWhitePawnTurn && boardCells[oldX][oldY].getContent() != BoardCell.Content.WHITE_KING) {
@@ -216,6 +230,7 @@ class MovingPawns implements Serializable {
         }
         return isStillWhitePawnTurn;
     }
+
     private static boolean isStillRedPawnTurn(boolean isRedPawnTurn, int oldX, int oldY, BoardCell[][] boardCells) {
         boolean isStillRedPawnTurn = false;
         if (boardCells[oldX][oldY].getContent() != BoardCell.Content.RED_PAWN && !isRedPawnTurn && boardCells[oldX][oldY].getContent() != BoardCell.Content.RED_KING) {
@@ -223,31 +238,7 @@ class MovingPawns implements Serializable {
         }
         return isStillRedPawnTurn;
     }
-    public static void findAllowedPlacesForKing(BoardCell[][] boardCells, int k, int m, int v, int g, BoardCell.Content content) {
-        boolean isTrue = true;
-        for (int i = k; isTrue; i += content == BoardCell.Content.WHITE_PAWN ? +1 : -1) {
-            if (isEmptyCell(oldX, oldY, i, i * v, boardCells)) {
-                if (boardCells[oldX - i + content.getContentInInt()][oldY - i * v + content.getContentInInt() * g].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING ||
-                        boardCells[oldX - i + content.getContentInInt()][oldY - i * v + content.getContentInInt() * g].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_KING ||
-                        boardCells[oldX - i + content.getContentInInt()][oldY - i * v + content.getContentInInt() * g].getContent() == BoardCell.Content.RED_KING && boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_KING ||
-                        boardCells[oldX - i + content.getContentInInt()][oldY - i * v + content.getContentInInt() * g].getContent() == BoardCell.Content.WHITE_KING && boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
-                    boardCells[oldX - i][oldY - i * v].setContent(BoardCell.Content.BLUE_PLACE);
-                    break;
-                } else if (boardCells[oldX - i + content.getContentInInt()][oldY - i * v + content.getContentInInt() * g].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_KING ||
-                        boardCells[oldX - i + content.getContentInInt()][oldY - i * v + content.getContentInInt() * g].getContent() == BoardCell.Content.RED_PAWN && boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
-                    break;
-                } else {
-                    boardCells[oldX - i][oldY - i * v].setContent(BoardCell.Content.BLUE_PLACE);
-                }
-            }
-            if (content == BoardCell.Content.WHITE_PAWN) {
-                isTrue = i < m;
-            } else if (content == BoardCell.Content.RED_PAWN) {
-                isTrue = i > m;
-            }
-        }
 
-    }
     public static void removeAllBluePlacesForBoard(Board board) {
         for (BoardCell[] x : board.getBoardCells()) {
             for (BoardCell y : x) {

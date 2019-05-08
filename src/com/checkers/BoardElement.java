@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
 
 import static com.checkers.CheckersApp.partOfBoardSize;
 
-public class BoardElement extends StackPane  {
+public class BoardElement extends StackPane {
 
 
     public BoardElement(BoardCell boardCell) {
@@ -33,14 +33,14 @@ public class BoardElement extends StackPane  {
                 bg.setFill(Color.valueOf("#fff9f4"));
                 bg.setStroke(Color.valueOf("#C0C0C0"));
                 bg.setStrokeWidth(partOfBoardSize * 0.03);
-            }else if (boardCell.getContent() == BoardCell.Content.WHITE_KING) {
+            } else if (boardCell.getContent() == BoardCell.Content.WHITE_KING) {
                 bg.setFill(Color.valueOf("#00FF00"));
                 bg.setStroke(Color.WHITE);
-                bg.setStrokeWidth(partOfBoardSize *  0.23);
+                bg.setStrokeWidth(partOfBoardSize * 0.23);
             } else if (boardCell.getContent() == BoardCell.Content.RED_KING) {
                 bg.setFill(Color.valueOf("#00FF00"));
                 bg.setStroke(Color.RED);
-                bg.setStrokeWidth(partOfBoardSize *  0.23);
+                bg.setStrokeWidth(partOfBoardSize * 0.23);
             }
             bg.setTranslateX((partOfBoardSize - partOfBoardSize * 0.48 * 2) / 2);
             bg.setTranslateY((partOfBoardSize - partOfBoardSize * 0.49 * 2) / 2);
@@ -48,8 +48,8 @@ public class BoardElement extends StackPane  {
 
         }
 
-        if(boardCell.getContent() == BoardCell.Content.BLUE_PLACE) {
-            Rectangle rectangle = new Rectangle((x)*100,(y)*100,partOfBoardSize, partOfBoardSize);
+        if (boardCell.getContent() == BoardCell.Content.BLUE_PLACE) {
+            Rectangle rectangle = new Rectangle((x) * 100, (y) * 100, partOfBoardSize, partOfBoardSize);
             rectangle.setFill(Color.BLUE);
             getChildren().add(rectangle);
         }

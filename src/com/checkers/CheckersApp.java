@@ -10,12 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-
 import static com.checkers.MovingPawns.redrawBoard;
 
-
 public class CheckersApp extends Application {
-
     public static final int partOfBoardSize = 100;
     public static final int width = 8;
     public static final int height = 8;
@@ -28,7 +25,6 @@ public class CheckersApp extends Application {
         root.getChildren().addAll(boardGroup);
         File file = new File("1.save");
         File file1 = new File("2.save");
-
         if (file.exists() && file.isFile()) {
             try {
                 BoardCell[][] boardCells = (BoardCell[][]) SaveAndLoadGameProgress.loadGameProgress("1.save");
@@ -67,7 +63,6 @@ public class CheckersApp extends Application {
                     System.out.println(e.getMessage());
                 }
             }
-
         } else {
             MovingPawns.whitePawnTurn = true;
             BoardCell[][] boardCells = readyBoard.getBoardCells();
@@ -92,10 +87,8 @@ public class CheckersApp extends Application {
                     }
                     boardCells[x][y] = boardCell;
                 }
-
         }
         return root;
-
     }
 
     public static void main(String[] args) {
@@ -113,6 +106,5 @@ public class CheckersApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
-
     }
 }
