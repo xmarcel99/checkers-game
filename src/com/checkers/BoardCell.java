@@ -13,8 +13,6 @@ public class BoardCell implements Serializable {
         }
         public   int getContentInInt() {return content;}
         public Content getOppositeContent () {return new BoardCell(-getContentInInt()).getContent();}
-
-
     }
 
     public enum Color {

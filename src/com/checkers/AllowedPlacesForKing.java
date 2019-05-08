@@ -47,14 +47,5 @@ public class AllowedPlacesForKing {
                 isTrue = i > m;
             }
         }
-/*Dla lewej góry:
-newX +1 , newY +1
-LEWY DÓŁ:
-newX +1, newY -1
-GÓRA PRAWO:
-newX -1, newY + 1
-DÓŁ PRAWO:
-newX -1, newY -1
-               */
     }
 }

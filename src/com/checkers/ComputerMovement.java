@@ -34,6 +34,7 @@ public class ComputerMovement {
                 if (y.getContent().getContentInInt() == -1) {
                     int oldX = y.getX();
                     int oldY = y.getY();
+
                     if (y.getContent() == BoardCell.Content.RED_PAWN) {
                         if (isEnemyPawn(oldX, oldY, 1, -1, boardCells) && isEmptyCell(oldX, oldY, 2, -2, boardCells)) {
                             if (oldY + 2 == 7) {
@@ -78,10 +79,10 @@ public class ComputerMovement {
                         Random random = new Random();
                         int wayForKingNumber = random.nextInt(4);
                         System.out.println(wayForKingNumber);
-                        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, 1, 8, 1, 1, BoardCell.Content.WHITE_PAWN, oldX, oldY,1,1);
-                        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, -1, -8, 1, 1, BoardCell.Content.RED_PAWN, oldX, oldY,-1,-1);
-                        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, 1, 8, -1, -1, BoardCell.Content.WHITE_PAWN, oldX, oldY,1,-1);
-                        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, -1, -8, -1, -1, BoardCell.Content.RED_PAWN, oldX, oldY,-1,1);
+                        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, 1, 8, 1, 1, BoardCell.Content.WHITE_PAWN, oldX, oldY, 1, 1);
+                        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, -1, -8, 1, 1, BoardCell.Content.RED_PAWN, oldX, oldY, -1, -1);
+                        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, 1, 8, -1, -1, BoardCell.Content.WHITE_PAWN, oldX, oldY, 1, -1);
+                        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, -1, -8, -1, -1, BoardCell.Content.RED_PAWN, oldX, oldY, -1, 1);
                         randomAllowedPlaceForComputerKing(oldX, oldY, boardCells);
                         canLoopGo = false;
                         break;

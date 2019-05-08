@@ -18,6 +18,7 @@ public class CheckersApp extends Application {
     public static final int height = 8;
     public static Board readyBoard = new Board(width, height);
     public static Group boardGroup = new Group();
+    public static  boolean isEndOfGame = true;
 
     private Parent createLayout() {
         Pane root = new Pane();
@@ -25,7 +26,13 @@ public class CheckersApp extends Application {
         root.getChildren().addAll(boardGroup);
         File file = new File("1.save");
         File file1 = new File("2.save");
-        if (file.exists() && file.isFile()) {
+        File file2 = new File("3.save");
+        try {
+             isEndOfGame = (boolean) SaveAndLoadGameProgress.loadGameProgress("3.save");
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        if (file.exists() && file.isFile() && !isEndOfGame) {
             try {
                 BoardCell[][] boardCells = (BoardCell[][]) SaveAndLoadGameProgress.loadGameProgress("1.save");
                 readyBoard.setBoardCells(boardCells);
@@ -63,7 +70,7 @@ public class CheckersApp extends Application {
                     System.out.println(e.getMessage());
                 }
             }
-        } else {
+        } else if(isEndOfGame){
             MovingPawns.whitePawnTurn = true;
             BoardCell[][] boardCells = readyBoard.getBoardCells();
 

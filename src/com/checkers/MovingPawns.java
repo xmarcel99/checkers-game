@@ -49,6 +49,14 @@ class MovingPawns implements Serializable {
             eventMovingPawnToAllowedPlace(boardCells);
             removeAllBluePlacesForBoard(board);
             redrawBoard(board);
+            if(Board.isEndOfGame(CheckersApp.readyBoard)) {
+                System.out.println("FINISH");
+            }
+            try {
+                SaveAndLoadGameProgress.saveGameProgress(Board.isEndOfGame(board), "3.save");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
             isSelect = true;
         }
     }
