@@ -12,7 +12,7 @@ public class AllowedPlacesForKing {
         return allowedPlacesToMove;
     }
 
-    public static void findAllowedPlacesForKing(BoardCell[][] boardCells, int k, int m, int v, int g, BoardCell.Content content, int oldX, int oldY) {
+    public static void findAllowedPlacesForKing(BoardCell[][] boardCells, int k, int m, int v, int g, BoardCell.Content content, int oldX, int oldY, int w, int z) {
         boolean isTrue = true;
 
         for (int i = k; isTrue; i += content == BoardCell.Content.WHITE_PAWN ? +1 : -1) {
@@ -27,7 +27,7 @@ public class AllowedPlacesForKing {
                         boardCells[oldX - i][oldY - i * v].setContent(BoardCell.Content.BLUE_PLACE);
                     } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
                         //bad value in CapturePawnX and CapturePawnY
-                        allowedPlacesToMove.add(new CoordinatesOfAloowedPlacesToMove(newX, newY, true, i + content.getContentInInt(), i * v + content.getContentInInt() * g));
+                        allowedPlacesToMove.add(new CoordinatesOfAloowedPlacesToMove(newX, newY, true, newX + w, newY + z));
                     }
                     break;
                 } else if (boardCells[oldX - i + content.getContentInInt()][oldY - i * v + content.getContentInInt() * g].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_KING ||
@@ -47,6 +47,14 @@ public class AllowedPlacesForKing {
                 isTrue = i > m;
             }
         }
-
+/*Dla lewej góry:
+newX +1 , newY +1
+LEWY DÓŁ:
+newX +1, newY -1
+GÓRA PRAWO:
+newX -1, newY + 1
+DÓŁ PRAWO:
+newX -1, newY -1
+               */
     }
 }
