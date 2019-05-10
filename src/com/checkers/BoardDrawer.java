@@ -1,27 +1,12 @@
 package com.checkers;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BoardDrawer {
     public List<BoardElement> draw(Board board) {
-
-        List<BoardElement> elements = new ArrayList<>();
-
-        for (BoardCell[] x : board.getBoardCells()) {
-            for (BoardCell y : x) {
-
-                elements.add(convertToBoardElement(y));
-            }
-        }
-
+        List<BoardElement> elements = Arrays.stream(board.getBoardCells()).flatMap(Arrays::stream).map(BoardElement::new).collect(Collectors.toList());
         return elements;
     }
-
-    private BoardElement convertToBoardElement(BoardCell y) {
-        BoardElement boardElement = new BoardElement(y);
-
-        return boardElement;
-    }
-
 }
 

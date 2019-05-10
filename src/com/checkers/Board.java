@@ -31,10 +31,16 @@ public class Board implements Serializable {
             }
         }
         if (counterOfRedPawn == 0 && counterOfWhitePawns > 0) {
+            System.out.println(">>>" +     "<<<");
             System.out.println("WHITE PAWN WON !");
+            System.out.println(">>>" +     "<<<");
+            System.out.println("NEW GAME: MENU ---->>>> NEW GAME");
             return true;
         } else if (counterOfWhitePawns == 0 && counterOfRedPawn > 0) {
+            System.out.println(">>>" +     "<<<");
             System.out.println("RED PAWN WON");
+            System.out.println(">>>" +     "<<<");
+            System.out.println("NEW GAME: MENU ---->>>> NEW GAME");
             return true;
         } else {
             return false;

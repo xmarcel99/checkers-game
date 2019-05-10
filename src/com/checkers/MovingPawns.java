@@ -49,15 +49,12 @@ class MovingPawns implements Serializable {
             eventMovingPawnToAllowedPlace(boardCells);
             removeAllBluePlacesForBoard(board);
             redrawBoard(board);
-            if(Board.isEndOfGame(CheckersApp.readyBoard)) {
-                System.out.println("FINISH");
+            SaveAndLoadGameProgress.saveGameProgress(Board.isEndOfGame(board), "3.save");
+            if(Board.isEndOfGame(board)) {
+                isSelect = false;
+            }else {
+                isSelect = true;
             }
-            try {
-                SaveAndLoadGameProgress.saveGameProgress(Board.isEndOfGame(board), "3.save");
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-            isSelect = true;
         }
     }
 
@@ -127,11 +124,7 @@ class MovingPawns implements Serializable {
             }
             boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
         }
-        try {
             SaveAndLoadGameProgress.saveGameProgress(boardCells, "1.save");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     private static void showAllowedPawnMovesForNotKing(BoardCell[][] boardCells, BoardCell.Content content) {
@@ -164,17 +157,9 @@ class MovingPawns implements Serializable {
         if (boardCells[newX][newY].getContent() == BoardCell.Content.BLUE_PLACE) {
             movePawnToBluePlace(newX, newY, oldX, oldY, boardCells[oldX][oldY].getContent());
             computerMovement(CheckersApp.readyBoard);
-            try {
-                SaveAndLoadGameProgress.saveGameProgress(whitePawnTurn, "2.save");
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+            SaveAndLoadGameProgress.saveGameProgress(whitePawnTurn, "2.save");
         } else if (boardCells[newX][newY].getContent() != BoardCell.Content.BLUE_PLACE) {
-            try {
-                SaveAndLoadGameProgress.saveGameProgress(!whitePawnTurn, "2.save");
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+            SaveAndLoadGameProgress.saveGameProgress(!whitePawnTurn, "2.save");
             if (boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_PAWN || boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_KING) {
                 whitePawnTurn = true;
             } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_PAWN || boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
@@ -190,10 +175,7 @@ class MovingPawns implements Serializable {
     }
 
     private static void showAllowedPawnMovesForKing(BoardCell[][] boardCells) {
-        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, 1, 8, 1, 1, BoardCell.Content.WHITE_PAWN, oldX, oldY,1,1);
-        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, -1, -8, 1, 1, BoardCell.Content.RED_PAWN, oldX, oldY,-1,-1);
-        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, 1, 8, -1, -1, BoardCell.Content.WHITE_PAWN, oldX, oldY,1,-1);
-        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, -1, -8, -1, -1, BoardCell.Content.RED_PAWN, oldX, oldY,-1,1);
+        ComputerMovement.kingMovement(boardCells,oldX,oldY);
         changePlayerTurn(boardCells[oldX][oldY].getContent(), boardCells);
     }
 

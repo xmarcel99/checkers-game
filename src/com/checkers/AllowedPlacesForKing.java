@@ -6,9 +6,9 @@ import java.util.List;
 import static com.checkers.MovingPawns.isEmptyCell;
 
 public class AllowedPlacesForKing {
-    private static List<CoordinatesOfAloowedPlacesToMove> allowedPlacesToMove = new ArrayList<>();
+    private static List<CoordinatesOfAllowedPlacesToMove> allowedPlacesToMove = new ArrayList<>();
 
-    public static List<CoordinatesOfAloowedPlacesToMove> getAllowedPlacesToMove() {
+    public static List<CoordinatesOfAllowedPlacesToMove> getAllowedPlacesToMove() {
         return allowedPlacesToMove;
     }
 
@@ -26,8 +26,7 @@ public class AllowedPlacesForKing {
                     if (boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_KING) {
                         boardCells[oldX - i][oldY - i * v].setContent(BoardCell.Content.BLUE_PLACE);
                     } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
-                        //bad value in CapturePawnX and CapturePawnY
-                        allowedPlacesToMove.add(new CoordinatesOfAloowedPlacesToMove(newX, newY, true, newX + w, newY + z));
+                        allowedPlacesToMove.add(new CoordinatesOfAllowedPlacesToMove(newX, newY, true, newX + w, newY + z));
                     }
                     break;
                 } else if (boardCells[oldX - i + content.getContentInInt()][oldY - i * v + content.getContentInInt() * g].getContent() == BoardCell.Content.WHITE_PAWN && boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_KING ||
@@ -37,7 +36,7 @@ public class AllowedPlacesForKing {
                     if (boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_KING) {
                         boardCells[oldX - i][oldY - i * v].setContent(BoardCell.Content.BLUE_PLACE);
                     } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
-                        allowedPlacesToMove.add(new CoordinatesOfAloowedPlacesToMove(newX, newY, false));
+                        allowedPlacesToMove.add(new CoordinatesOfAllowedPlacesToMove(newX, newY, false));
                     }
                 }
             }

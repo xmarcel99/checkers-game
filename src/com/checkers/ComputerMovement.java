@@ -14,10 +14,10 @@ public class ComputerMovement {
     }
 
     private static void randomAllowedPlaceForComputerKing(int oldX, int oldY, BoardCell[][] boardCells) {
-        List<CoordinatesOfAloowedPlacesToMove> allowedPlacesToMove = AllowedPlacesForKing.getAllowedPlacesToMove();
+        List<CoordinatesOfAllowedPlacesToMove> allowedPlacesToMove = AllowedPlacesForKing.getAllowedPlacesToMove();
         Random random = new Random();
         int randomNumber = random.nextInt(allowedPlacesToMove.size());
-        CoordinatesOfAloowedPlacesToMove randomAllowedPlace = allowedPlacesToMove.get(randomNumber);
+        CoordinatesOfAllowedPlacesToMove randomAllowedPlace = allowedPlacesToMove.get(randomNumber);
         boardCells[randomAllowedPlace.getNewX()][randomAllowedPlace.getNewY()].setContent(BoardCell.Content.RED_KING);
         if (randomAllowedPlace.isCapturing()) {
             boardCells[randomAllowedPlace.getCapturedPawnX()][randomAllowedPlace.getCapturedPawnY()].setContent(BoardCell.Content.EMPTY);
@@ -76,13 +76,7 @@ public class ComputerMovement {
                             break;
                         }
                     } else if (y.getContent() == BoardCell.Content.RED_KING) {
-                        Random random = new Random();
-                        int wayForKingNumber = random.nextInt(4);
-                        System.out.println(wayForKingNumber);
-                        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, 1, 8, 1, 1, BoardCell.Content.WHITE_PAWN, oldX, oldY, 1, 1);
-                        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, -1, -8, 1, 1, BoardCell.Content.RED_PAWN, oldX, oldY, -1, -1);
-                        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, 1, 8, -1, -1, BoardCell.Content.WHITE_PAWN, oldX, oldY, 1, -1);
-                        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, -1, -8, -1, -1, BoardCell.Content.RED_PAWN, oldX, oldY, -1, 1);
+                        kingMovement(boardCells,oldX,oldY);
                         randomAllowedPlaceForComputerKing(oldX, oldY, boardCells);
                         canLoopGo = false;
                         break;
@@ -93,11 +87,13 @@ public class ComputerMovement {
                 break;
             }
         }
-        try {
-            SaveAndLoadGameProgress.saveGameProgress(boardCells, "1.save");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        SaveAndLoadGameProgress.saveGameProgress(boardCells, "1.save");
         MovingPawns.whitePawnTurn = true;
+    }
+    public static void kingMovement(BoardCell[][] boardCells,int oldX, int oldY) {
+        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, 1, 8, 1, 1, BoardCell.Content.WHITE_PAWN, oldX, oldY, 1, 1);
+        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, -1, -8, 1, 1, BoardCell.Content.RED_PAWN, oldX, oldY, -1, -1);
+        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, 1, 8, -1, -1, BoardCell.Content.WHITE_PAWN, oldX, oldY, 1, -1);
+        AllowedPlacesForKing.findAllowedPlacesForKing(boardCells, -1, -8, -1, -1, BoardCell.Content.RED_PAWN, oldX, oldY, -1, 1);
     }
 }
