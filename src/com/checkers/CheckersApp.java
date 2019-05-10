@@ -14,7 +14,6 @@ public class CheckersApp extends Application {
     public static final int height = 8;
     public static Board readyBoard = new Board(width, height);
     public static Group boardGroup = new Group();
-    public static  boolean isEndOfGame = true;
     private static BorderPane root;
     private Parent createLayout() {
         root = new BorderPane();
