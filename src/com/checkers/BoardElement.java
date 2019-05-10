@@ -16,12 +16,12 @@ public class BoardElement extends StackPane {
         int y = boardCell.getY();
 
         if (boardCell.getContent() == BoardCell.Content.EMPTY) {
-            relocate(x * partOfBoardSize, y * partOfBoardSize);
+            relocate(x * partOfBoardSize, y * partOfBoardSize+20);
             Rectangle rectangle = new Rectangle(partOfBoardSize, partOfBoardSize);
             rectangle.setFill(Color.valueOf(boardCell.getCellColors().getColorCode()));
             getChildren().addAll(rectangle);
         } else {
-            relocate(x * partOfBoardSize, y * partOfBoardSize);
+            relocate(x * partOfBoardSize, y * partOfBoardSize+20);
             Rectangle rectangle = new Rectangle(partOfBoardSize, partOfBoardSize);
             rectangle.setFill(Color.valueOf(boardCell.getCellColors().getColorCode()));
             Ellipse bg = new Ellipse(partOfBoardSize * 0.3125, partOfBoardSize * 0.26);
@@ -49,7 +49,7 @@ public class BoardElement extends StackPane {
         }
 
         if (boardCell.getContent() == BoardCell.Content.BLUE_PLACE) {
-            Rectangle rectangle = new Rectangle((x) * 100, (y) * 100, partOfBoardSize, partOfBoardSize);
+            Rectangle rectangle = new Rectangle((x) * 100, (y) * 100+20, partOfBoardSize, partOfBoardSize);
             rectangle.setFill(Color.BLUE);
             getChildren().add(rectangle);
         }

@@ -17,7 +17,7 @@ public class CheckersApp extends Application {
     private static BorderPane root;
     private Parent createLayout() {
         root = new BorderPane();
-        root.setPrefSize(width * partOfBoardSize, height * partOfBoardSize);
+        root.setPrefSize(width * partOfBoardSize, height * partOfBoardSize+20);
         root.getChildren().addAll(boardGroup);
         SaveAndLoadGameProgress.newGame(readyBoard);
         return root;
