@@ -47,4 +47,11 @@ public class AllowedPlacesForKing {
             }
         }
     }
+    public static boolean isAnyKillMove(BoardCell[][] boardCells, int oldX, int oldY, int i, int i2, int e , int e2, BoardCell.Content content) {
+        if (oldX - i < 0 || oldX - i > 7 || oldY - i2 < 0 || oldY - i2 > 7) {
+            return false;
+        }
+        return boardCells[oldX - i][oldY - i2].getContent() == BoardCell.Content.EMPTY &&
+                boardCells[oldX -e][oldY - e2].getContent().getContentInInt() == content.getOppositeContent().getContentInInt();
+    }
 }

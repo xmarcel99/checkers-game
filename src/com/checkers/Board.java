@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Board implements Serializable {
     private static BoardCell[][] boardCells;
     private static final long serialVersionUID = 3L;
+    static boolean areRedWon;
 
     public Board(int width, int heigth) {
         this.boardCells = new BoardCell[width][heigth];
@@ -31,16 +32,12 @@ public class Board implements Serializable {
             }
         }
         if (counterOfRedPawn == 0 && counterOfWhitePawns > 0) {
-            System.out.println(">>>" +     "<<<");
-            System.out.println("WHITE PAWN WON !");
-            System.out.println(">>>" +     "<<<");
-            System.out.println("NEW GAME: MENU ---->>>> NEW GAME");
+            areRedWon = false;
+            MessageBox.displayBox();
             return true;
         } else if (counterOfWhitePawns == 0 && counterOfRedPawn > 0) {
-            System.out.println(">>>" +     "<<<");
-            System.out.println("RED PAWN WON");
-            System.out.println(">>>" +     "<<<");
-            System.out.println("NEW GAME: MENU ---->>>> NEW GAME");
+            areRedWon = true;
+            MessageBox.displayBox();
             return true;
         } else {
             return false;
