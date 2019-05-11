@@ -1,6 +1,7 @@
 package com.checkers;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.event.EventHandler;
@@ -17,6 +18,7 @@ class MovingPawns implements Serializable {
     public static boolean isSelect = true;
     private static BoardDrawer boardDrawer = new BoardDrawer();
     public static boolean whitePawnTurn;
+    private static List<CoordinatesOfAllowedPlacesToMove> coordinatesOfAllowedPlacesToMovesList = new ArrayList<>();
 
     public static void addMovingPawnListener(List<BoardElement> boardElements, Board board) {
         addListeners(boardElements, board);
@@ -50,9 +52,9 @@ class MovingPawns implements Serializable {
             removeAllBluePlacesForBoard(board);
             redrawBoard(board);
             SaveAndLoadGameProgress.saveGameProgress(Board.isEndOfGame(board), "3.save");
-            if(Board.isEndOfGame(board)) {
+            if (Board.isEndOfGame(board)) {
                 isSelect = false;
-            }else {
+            } else {
                 isSelect = true;
             }
         }
@@ -80,17 +82,20 @@ class MovingPawns implements Serializable {
                 boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
                 if (boardCells[oldX - 1][oldY - content.getContentInInt()].getContent().getContentInInt() == content.getOppositeContent().getContentInInt()) {
                     boardCells[oldX - 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.EMPTY);
+                    coordinatesOfAllowedPlacesToMovesList.add(new CoordinatesOfAllowedPlacesToMove(newX, newY, true, oldX - 1, oldY - content.getContentInInt()));
                 }
             } else if (oldX > 0 && boardCells[oldX - 1][oldY - content.getContentInInt()].getContent().getContentInInt() == content.getOppositeContent().getContentInInt()
                     && isBlueCell(2, 2 * content.getContentInInt(), boardCells)) {
                 if (isBlueCell(2, 2 * content.getContentInInt(), boardCells)) {
                     boardCells[oldX - 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.EMPTY);
+                    coordinatesOfAllowedPlacesToMovesList.add(new CoordinatesOfAllowedPlacesToMove(newX, newY, true, oldX - 1, oldY - content.getContentInInt()));
                 }
             } else if (oldX + 1 == 7) {
                 boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
             } else if (boardCells[oldX + 1][oldY - content.getContentInInt()].getContent().getContentInInt() == content.getOppositeContent().getContentInInt()
                     && isBlueCell(-2, 2 * content.getContentInInt(), boardCells) && isBlueCell(-2, 2 * content.getContentInInt(), boardCells)) {
                 boardCells[oldX + 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.EMPTY);
+                coordinatesOfAllowedPlacesToMovesList.add(new CoordinatesOfAllowedPlacesToMove(newX, newY, true, oldX + 1, oldY - content.getContentInInt()));
             }
             if (content == BoardCell.Content.WHITE_PAWN) {
                 if (newY == 0) {
@@ -124,7 +129,7 @@ class MovingPawns implements Serializable {
             }
             boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
         }
-            SaveAndLoadGameProgress.saveGameProgress(boardCells, "1.save");
+        SaveAndLoadGameProgress.saveGameProgress(boardCells, "1.save");
     }
 
     private static void showAllowedPawnMovesForNotKing(BoardCell[][] boardCells, BoardCell.Content content) {
@@ -156,6 +161,20 @@ class MovingPawns implements Serializable {
     private static void eventMovingPawnToAllowedPlace(BoardCell[][] boardCells) {
         if (boardCells[newX][newY].getContent() == BoardCell.Content.BLUE_PLACE) {
             movePawnToBluePlace(newX, newY, oldX, oldY, boardCells[oldX][oldY].getContent());
+            if (coordinatesOfAllowedPlacesToMovesList.size() == 1 && coordinatesOfAllowedPlacesToMovesList.get(0).isCapturing()) {
+                while (AllowedPlacesForKing.isAnyKillMove(boardCells, newX, newY, 2, 2, 1, 1, BoardCell.Content.WHITE_PAWN) ||
+                        AllowedPlacesForKing.isAnyKillMove(boardCells, newX, newY, -2, 2, -1, 1, BoardCell.Content.WHITE_PAWN)) {
+                    if (AllowedPlacesForKing.isAnyKillMove(boardCells, newX, newY, 2, 2, 1, 1, BoardCell.Content.WHITE_PAWN)) {
+                        boardCells[newX - 2][newY - 2].setContent(BoardCell.Content.WHITE_PAWN);
+                        boardCells[newX - 1][newY - 1].setContent(BoardCell.Content.EMPTY);
+                    } else if (AllowedPlacesForKing.isAnyKillMove(boardCells, newX, newY, -2, 2, -1, 1, BoardCell.Content.WHITE_PAWN)) {
+                        boardCells[newX + 2][newY - 2].setContent(BoardCell.Content.WHITE_PAWN);
+                        boardCells[newX + 1][newY - 1].setContent(BoardCell.Content.EMPTY);
+                    }
+                    boardCells[newX][newY].setContent(BoardCell.Content.EMPTY);
+                }
+            }
+            coordinatesOfAllowedPlacesToMovesList.clear();
             computerMovement(CheckersApp.readyBoard);
             SaveAndLoadGameProgress.saveGameProgress(whitePawnTurn, "2.save");
         } else if (boardCells[newX][newY].getContent() != BoardCell.Content.BLUE_PLACE) {
@@ -175,7 +194,7 @@ class MovingPawns implements Serializable {
     }
 
     private static void showAllowedPawnMovesForKing(BoardCell[][] boardCells) {
-        ComputerMovement.kingMovement(boardCells,oldX,oldY);
+        ComputerMovement.kingMovement(boardCells, oldX, oldY);
         changePlayerTurn(boardCells[oldX][oldY].getContent(), boardCells);
     }
 
