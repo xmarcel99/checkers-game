@@ -101,10 +101,18 @@ public class ComputerMovement {
             while (AllowedPlacesForKing.isAnyKillMove(boardCells, newX, newY, 2, -2, 1, -1, BoardCell.Content.RED_PAWN) ||
                     AllowedPlacesForKing.isAnyKillMove(boardCells, newX, newY, -2, -2, -1, -1, BoardCell.Content.RED_PAWN)) {
                 if (AllowedPlacesForKing.isAnyKillMove(boardCells, newX, newY, 2, -2, 1, -1, BoardCell.Content.RED_PAWN)) {
-                    boardCells[newX - 2][newY + 2].setContent(BoardCell.Content.RED_PAWN);
+                    if(newY + 2 == 7) {
+                        boardCells[newX - 2][newY + 2].setContent(BoardCell.Content.RED_KING);
+                    } else {
+                        boardCells[newX - 2][newY + 2].setContent(BoardCell.Content.RED_PAWN);
+                    }
                     boardCells[newX - 1][newY + 1].setContent(BoardCell.Content.EMPTY);
                 } else if (AllowedPlacesForKing.isAnyKillMove(boardCells, newX, newY, -2, -2, -1, -1, BoardCell.Content.RED_PAWN)) {
-                    boardCells[newX + 2][newY + 2].setContent(BoardCell.Content.RED_PAWN);
+                    if(newY + 2 == 7) {
+                        boardCells[newX + 2][newY + 2].setContent(BoardCell.Content.RED_KING);
+                    }else {
+                        boardCells[newX + 2][newY + 2].setContent(BoardCell.Content.RED_PAWN);
+                    }
                     boardCells[newX + 1][newY + 1].setContent(BoardCell.Content.EMPTY);
                 }
                 boardCells[newX][newY].setContent(BoardCell.Content.EMPTY);
