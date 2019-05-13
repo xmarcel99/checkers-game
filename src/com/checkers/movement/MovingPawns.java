@@ -103,20 +103,7 @@ public class MovingPawns implements Serializable {
                 boardCells[oldX + 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.EMPTY);
                 coordinatesOfAllowedPlacesToMovesList.add(new CoordinatesOfAllowedPlacesToMove(newX, newY, true, oldX + 1, oldY - content.getContentInInt()));
             }
-            if (content == BoardCell.Content.WHITE_PAWN) {
-                if (newY == 0) {
-                    boardCells[newX][newY].setContent(BoardCell.Content.WHITE_KING);
-                } else {
-                    boardCells[newX][newY].setContent(BoardCell.Content.WHITE_PAWN);
-                }
-            } else if (content == BoardCell.Content.RED_PAWN) {
-                if (newY == 7) {
-                    boardCells[newX][newY].setContent(BoardCell.Content.RED_KING);
-                } else {
-                    boardCells[newX][newY].setContent(BoardCell.Content.RED_PAWN);
-                }
-            }
-            boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
+            setPawnOnNewPlace(content,boardCells);
         } else if (boardCells[oldX][oldY].getContent() == BoardCell.Content.WHITE_KING || boardCells[oldX][oldY].getContent() == BoardCell.Content.RED_KING) {
 
             if (isBlueCellForKings(-2, -2, boardCells)) {
@@ -137,7 +124,22 @@ public class MovingPawns implements Serializable {
         }
         SaveAndLoadGameProgress.saveGameProgress(boardCells, "1.save");
     }
-
+    private static void setPawnOnNewPlace(BoardCell.Content content, BoardCell[][] boardCells) {
+        if (content == BoardCell.Content.WHITE_PAWN) {
+            if (newY == 0) {
+                boardCells[newX][newY].setContent(BoardCell.Content.WHITE_KING);
+            } else {
+                boardCells[newX][newY].setContent(BoardCell.Content.WHITE_PAWN);
+            }
+        } else if (content == BoardCell.Content.RED_PAWN) {
+            if (newY == 7) {
+                boardCells[newX][newY].setContent(BoardCell.Content.RED_KING);
+            } else {
+                boardCells[newX][newY].setContent(BoardCell.Content.RED_PAWN);
+            }
+        }
+        boardCells[oldX][oldY].setContent(BoardCell.Content.EMPTY);
+    }
     private static void showAllowedPawnMovesForNotKing(BoardCell[][] boardCells, BoardCell.Content content) {
         if ((oldX == 0 && boardCells[oldX + 1][oldY - content.getContentInInt()].getContent() == BoardCell.Content.EMPTY)) {
             boardCells[oldX + 1][oldY - content.getContentInInt()].setContent(BoardCell.Content.BLUE_PLACE);
