@@ -1,6 +1,13 @@
 package com.checkers;
 
 import java.util.List;
+
+import com.checkers.board.Board;
+import com.checkers.board.BoardDrawer;
+import com.checkers.board.BoardElement;
+import com.checkers.gameMenu.GameMenu;
+import com.checkers.gameProgress.SaveAndLoadGameProgress;
+import com.checkers.movement.MovingPawns;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Parent;
